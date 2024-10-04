@@ -36,4 +36,10 @@ public:
     bool IsBefore(Date date);
     bool IsAfter(Date date);
     bool IsLeapYear(unsigned int year);
+
+    bool operator >(const Date& other);
+    bool operator <(const Date& other);
+    bool operator ==(const Date& other);
+    bool operator >=(const Date& other);
+    bool operator <=(const Date& other);
 };

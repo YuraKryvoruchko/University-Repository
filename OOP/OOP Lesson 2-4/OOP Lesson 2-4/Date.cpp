@@ -204,6 +204,22 @@ unsigned int Date::GetNumberOfDaysBetweenDates(Date secondDate) {
 	return totalDays;
 }
 
+bool Date::operator<(const Date& other) {
+	return IsBefore(other);
+}
+bool Date::operator>(const Date& other) {
+	return IsAfter(other);
+}
+bool Date::operator==(const Date& other) {
+	return IsEquals(other);
+}
+bool Date::operator<=(const Date& other) {
+	return IsBefore(other) || IsEquals(other);
+}
+bool Date::operator>=(const Date& other) {
+	return IsAfter(other) || IsEquals(other);
+}
+
 unsigned int Date::GetDaysCountInMonth(unsigned int month, unsigned int year)
 {
 	switch (month) {

@@ -67,10 +67,10 @@ int main()
             Date newDate;
             cout << "New date: ";
             newDate.Read();
-            if (date.IsEquals(newDate)) {
+            if (date == newDate) {
                 cout << "Date " << date.ToString() << " and date " << newDate.ToString() << " are equals!\n";
             }
-            else if (date.IsBefore(newDate)) {
+            else if (date < newDate) {
                 cout << "Date " << date.ToString() << " is before date " << newDate.ToString() << "!\n";
             }
             else {
