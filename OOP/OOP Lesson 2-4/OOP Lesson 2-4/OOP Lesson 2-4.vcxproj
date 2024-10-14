@@ -128,10 +128,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="OOP Lesson 2-4.cpp" />
-    <ClCompile Include="Date.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Date.h" />
+    <ProjectReference Include="..\DateStaticLib\DateStaticLib.vcxproj">
+      <Project>{61bc7ae9-ec5f-4a7c-ad7f-dd73511a6117}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
