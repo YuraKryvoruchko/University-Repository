@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cstdlib>
 
 using namespace std;
 
@@ -36,10 +35,10 @@ int binarySearch(int array[], int length, int value) {
 
 void bubbleSort(int array[], int length) {
     cout << "#BUBBLE_SORT start!" << endl;
+    int iterationNumber = 0;
     for (int i = 0; i < length; i++) {
         for (int j = 0; j < length - 1; j++) {
-            cout << "#BUBBLE_SORT check " << j << '(' << array[j] << ") and " 
-                << j + 1 << '(' << array[j + 1] << ')' << endl;
+            cout << "#BUBBLE_SORT check " << j << '(' << array[j] << ") and " << j + 1 << '(' << array[j + 1] << ')' << endl;
 
             if (array[j] > array[j + 1]) {
                 cout << "#BUBBLE_SORT swapping" << endl;
@@ -48,41 +47,49 @@ void bubbleSort(int array[], int length) {
                 array[j + 1] = array[j];
                 array[j] = tmp;
             }
+            iterationNumber++;
         }
     }
+    cout << "#BUBBLE_SORT Iteration number: " << iterationNumber;
 }
 void choiceSort(int array[], int length) {
     cout << "#CHOICE_SORT start!" << endl;
+    int iterationNumber = 0;
     for (int i = 0; i < length; i++) {
         int min = array[i];
         int minIndex = i;
         bool minFound = false;
 
         for (int j = i + 1; j < length; j++) {
+            cout << "#CHOICE_SORT check min(" << min << ") and " << j << '(' << array[j] << ')' << endl;
+
             if (min > array[j]) {
                 min = array[j];
                 minIndex = j;
                 minFound = true;
+                cout << "#CHOICE_SORT set min index: " << minIndex << "; min value: " << min << endl;
             }
+            iterationNumber++;
         }
 
         if (minFound) {
             array[minIndex] = array[i];
             array[i] = min;
+            cout << "#CHOICE_SORT min is founded: " << i << "(" << array[i] << "); " << i << "(" << array[i] << ")" << endl;
         }
     }
+    cout << "#CHOICE_SORT Iteration number: " << iterationNumber;
 }
-
-int const ARRAY_SIZE = 15;
 
 int main()
 {
-    srand(static_cast<unsigned int>(time(0)));
-
-    int test[ARRAY_SIZE] = { 10, 20, 34, 24, 7, 100, 443, 84, 124, 53, 15, 21, 96, 31, 102 };
-    cout << "Array: ";
-    for (int i = 0; i < ARRAY_SIZE; i++) {
-        cout << test[i] << "; ";
+    cout << "Input array size: ";
+    int arraySize = 0;
+    cin >> arraySize;
+    int* arrayPtr = new int[arraySize];
+    for (int i = 0; i < arraySize; i++) {
+        cout << "Input number #" << i + 1 << ": ";
+        cin >> arrayPtr[i];
     }
     cout << endl;
 
@@ -92,24 +99,27 @@ int main()
     cout << "1. Bubble sort" << endl;
     cin >> isBubbleSort;
     if (isBubbleSort) {
-        bubbleSort(test, ARRAY_SIZE);
+        bubbleSort(arrayPtr, arraySize);
     }
     else {
-        choiceSort(test, ARRAY_SIZE);
+        choiceSort(arrayPtr, arraySize);
     }
+
     cout << "\nArray: ";
-    for (int i = 0; i < ARRAY_SIZE; i++) {
-        cout << test[i] << "; ";
+    for (int i = 0; i < arraySize; i++) {
+        cout << arrayPtr[i] << "; ";
     }
     
-    int value;
+    int searchValue;
     cout << "\n\nSearch value for linear search: ";
-    cin >> value;
-    cout << "Linear search result: " << linearSearch(test, ARRAY_SIZE, value) << endl;
+    cin >> searchValue;
+    cout << "Linear search result: " << linearSearch(arrayPtr, arraySize, searchValue) << endl;
 
     cout << "\nSearch value for binary search: ";
-    cin >> value;
-    cout << "Binary search result: " << binarySearch(test, ARRAY_SIZE, value) << endl;
+    cin >> searchValue;
+    cout << "Binary search result: " << binarySearch(arrayPtr, arraySize, searchValue) << endl;
+
+    delete[] arrayPtr;
 
     return 0;
 }
