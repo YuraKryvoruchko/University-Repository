@@ -4,7 +4,7 @@ using namespace std;
 
 int factorial(int n) {
     cout << n;
-    if (n == 1) {
+    if (n <= 1) {
         return 1;
     }
 
@@ -21,22 +21,19 @@ void factorialTest() {
     cout << " = " << factorialNumber << endl;
 }
 
-void printFibonacciSequence(int firstNumber, int secondNumber, int n) {
-    if (n < 1) {
-        return;
+int getFibonaccNumber(int n) {
+    if (n <= 1) {
+        return n;
     }
 
-    cout << firstNumber << "; ";
-
-    int currentNumber = firstNumber + secondNumber;
-    printFibonacciSequence(currentNumber, firstNumber, n - 1);
+    return getFibonaccNumber(n - 1) + getFibonaccNumber(n - 2);
 }
 void printFibonacciSequenceTest() {
     int n;
-    cout << "Input fibonacci sequence lenght: ";
+    cout << "Input fibonacci number position: ";
     cin >> n;
 
-    printFibonacciSequence(0, 1, n);
+    cout << "Fibonacci number: " << getFibonaccNumber(n);
 }
 
 int main()
