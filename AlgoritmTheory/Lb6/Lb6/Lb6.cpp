@@ -2,16 +2,32 @@
 //
 
 #include <iostream>
+#include "toString.h"
+#include "LinkedListNode.h"
 #include "LinkedList.h"
 
-bool validate(int a) {
-    return a > 5;
-}
+class Test {
+public:
+	int A;
+	friend std::ostream& operator <<(std::ostream& os, const Test& test) {
+		return os << std::to_string(test.A);
+	}
+};
 
 int main()
 {
-	LinkedList<int> list;
-	list.getNumberByProperty(&validate);
+	Test test, test2, test3;
+	test.A = 14;
+	test2.A = 19;
+	test3.A = -2;
+
+	LinkedList<Test> linkedList;
+	linkedList.addFirst(test);
+	linkedList.addLast(test2);
+	linkedList.addLast(test3);
+
+	std::string text = linkedList.toString();
+	std::cout << text;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

@@ -1,11 +1,5 @@
 #include "LinkedList.h"
-#include <iostream>;
-
-template<typename T>
-LinkedListNode<T>::LinkedListNode(T value, LinkedListNode<T>* next) {
-	this->Value = value;
-	this->NextNode = next;
-}
+#include "toString.h"
 
 template<typename T>
 int LinkedList<T>::getCount() {
@@ -25,6 +19,7 @@ int LinkedList<T>::getNumberByProperty(bool (*function)(T)) {
 	return count;
 }
 
+
 template<typename T>
 LinkedListNode<T>* LinkedList<T>::getFirst() {
 	return this->_first;
@@ -36,10 +31,10 @@ LinkedListNode<T>* LinkedList<T>::getLast() {
 }
 
 template<typename T>
-void LinkedList<T>::insertAtBeginning(T value) {
+void LinkedList<T>::addFirst(T value) {
 	if (this->_first == nullptr) {
 		this->_first = new LinkedListNode<T>(value, nullptr);
-		this->_last = this->_first
+		this->_last = this->_first;
 	}
 	else {
 		LinkedListNode<T>* newNode = new LinkedListNode<T>(value, this->_first);
@@ -49,10 +44,10 @@ void LinkedList<T>::insertAtBeginning(T value) {
 }
 
 template<typename T>
-void LinkedList<T>::insertAtEnd(T value) {
+void LinkedList<T>::addLast(T value) {
 	if (this->_last == nullptr) {
 		this->_first = new LinkedListNode<T>(value, nullptr);
-		this->_last = this->_first
+		this->_last = this->_first;
 	}
 	else {
 		LinkedListNode<T>* newNode = new LinkedListNode<T>(value, nullptr);
@@ -63,17 +58,34 @@ void LinkedList<T>::insertAtEnd(T value) {
 }
 
 template<typename T>
-void LinkedList<T>::insertAtPosition(T value, int position) {
-	if (position >= this->_count) {
-		throw std::invalid_argument("Argument Out Of Range Exception");
-	}
-	
-	LinkedListNode<T>* previous = this->_first;
-	for (int i = 1; i < position; i++) {
-		previous = previous->NextNode;
-	}
+LinkedListNode<T>* LinkedList<T>::getFirst() {
+	return this->_first;
+}
 
-	LinkedListNode<T>* nextNode = previous->NextNode;
-	previous->NextNode = new LinkedListNode<T>(value, nextNode);
-	this->_count++;
+//template<typename T>
+//void LinkedList<T>::insertAtPosition(T value, int position) {
+//	if (position >= this->_count) {
+//		throw std::invalid_argument("Argument Out Of Range Exception");
+//	}
+//	
+//	LinkedListNode<T>* previous = this->_first;
+//	for (int i = 1; i < position; i++) {
+//		previous = previous->NextNode;
+//	}
+//
+//	LinkedListNode<T>* nextNode = previous->NextNode;
+//	previous->NextNode = new LinkedListNode<T>(value, nextNode);
+//	this->_count++;
+//}
+
+template<typename T>
+std::string LinkedList<T>::toString() {
+	std::string text;
+	LinkedListNode<T>* node = this->getFirst();
+	text += toString(&node);
+	while (node->NextNode != nullptr) {
+		node = node->NextNode;
+		text += " --> " + toString(&node);
+	}
+	return text;
 }

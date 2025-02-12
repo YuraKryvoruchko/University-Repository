@@ -1,15 +1,6 @@
 #pragma once
-
-#include <iostream>;
-
-template<typename T>
-class LinkedListNode {
-public:
-	LinkedListNode(T value, LinkedListNode<T>* next = nullptr);
-
-	T Value;
-	LinkedListNode<T>* NextNode;
-};
+#include <iostream>
+#include "LinkedListNode.h"
 
 template<typename T>
 class LinkedList
@@ -24,13 +15,17 @@ public:
 
 	LinkedListNode<T>* getFirst();
 	LinkedListNode<T>* getLast();
-	void insertAtBeginning(T value);
-	void insertAtEnd(T value);
-	void insertAtPosition(T value, int position);
+	void addFirst(T value);
+	void addLast(T value);
+	void addAfter(LinkedListNode<T>* node, LinkedListNode<T>* after) {
+		LinkedListNode<T>* next = node->NextNode;
+		node->NextNode = after;
+		after->NextNode = next;
+	}
+	void insertAfter(int index, T value);
 	void remove(T value);
 	void removeNode(LinkedListNode<T>* node);
-	void merge(LinkedList<T> secondList);
+	void removeLast();
 
 	std::string toString();
 };
-
