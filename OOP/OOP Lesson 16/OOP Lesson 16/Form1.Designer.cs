@@ -109,6 +109,7 @@
             buttonAdd.TabIndex = 7;
             buttonAdd.Text = "Add";
             buttonAdd.UseVisualStyleBackColor = true;
+            buttonAdd.Click += buttonAdd_Click;
             // 
             // buttonSubtract
             // 
@@ -118,6 +119,7 @@
             buttonSubtract.TabIndex = 8;
             buttonSubtract.Text = "Subtract";
             buttonSubtract.UseVisualStyleBackColor = true;
+            buttonSubtract.Click += buttonSubtract_Click;
             // 
             // buttonMultiply
             // 
@@ -127,6 +129,7 @@
             buttonMultiply.TabIndex = 9;
             buttonMultiply.Text = "Multiply";
             buttonMultiply.UseVisualStyleBackColor = true;
+            buttonMultiply.Click += buttonMultiply_Click;
             // 
             // textBoxResultPolynomial
             // 
@@ -142,7 +145,7 @@
             textBoxXValue.Name = "textBoxXValue";
             textBoxXValue.Size = new Size(115, 31);
             textBoxXValue.TabIndex = 11;
-            textBoxXValue.Text = "0.0";
+            textBoxXValue.Text = "0,0";
             // 
             // buttonEvaluateFromResult
             // 
@@ -152,6 +155,7 @@
             buttonEvaluateFromResult.TabIndex = 12;
             buttonEvaluateFromResult.Text = "From result";
             buttonEvaluateFromResult.UseVisualStyleBackColor = true;
+            buttonEvaluateFromResult.Click += buttonEvaluateFromResult_Click;
             // 
             // label3
             // 
@@ -171,6 +175,7 @@
             buttonEvaluateSecond.TabIndex = 14;
             buttonEvaluateSecond.Text = "Second";
             buttonEvaluateSecond.UseVisualStyleBackColor = true;
+            buttonEvaluateSecond.Click += buttonEvaluateSecond_Click;
             // 
             // buttonEvaluateFirst
             // 
@@ -180,6 +185,7 @@
             buttonEvaluateFirst.TabIndex = 15;
             buttonEvaluateFirst.Text = "First";
             buttonEvaluateFirst.UseVisualStyleBackColor = true;
+            buttonEvaluateFirst.Click += buttonEvaluateFirst_Click;
             // 
             // label6
             // 
