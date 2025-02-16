@@ -5,6 +5,8 @@
         public int Degree { get; private set; }
         public double[] Coefficients { get; private set; }
 
+        public static int Count { get; private set; }
+
         public Polynomial(int degree)
         {
             if (degree < 0)
@@ -13,16 +15,24 @@
             }
             Degree = degree;
             Coefficients = new double[degree + 1];
+            Count++;
         }
         public Polynomial(params double[] coefficients)
         {
+            if(coefficients.Length == 0)
+            {
+                throw new ArgumentException("The array must contain at least one coefficient!");
+            }
+
             Degree = coefficients.Length - 1;
             Coefficients = coefficients;
+            Count++;
         }
         public Polynomial(Polynomial other)
         {
             Degree = other.Degree;
             Coefficients = (double[])other.Coefficients.Clone();
+            Count++;
         }
 
         public double Evaluate(double x)
@@ -72,7 +82,7 @@
             {
                 for(int j = 0; j <= p2.Degree; j++)
                 {
-                    resultCoeffs[i + j] += p1.Coefficients[i] * p2.Coefficients[i];
+                    resultCoeffs[i + j] += p1.Coefficients[i] * p2.Coefficients[j];
                 }
             }
 
@@ -81,10 +91,24 @@
 
         public override string ToString()
         {
-            string newString = $"{Coefficients[Degree]}x^{Degree}";
-            for (int i = Degree - 1; i > 0; i--)
+            if (Coefficients.Length == 1)
             {
-                if (Coefficients[i] >= 0)
+                return Coefficients[0].ToString();
+            }
+
+            string newString = $"{Coefficients[Degree]}";
+            for (int i = Degree; i > 0; i--)
+            {
+                if (i > 1)
+                {
+                    newString += $"x^{i}";
+                }
+                else if(i == 1)
+                {
+                    newString += $"x";
+                }
+
+                if (Coefficients[i - 1] >= 0)
                 {
                     newString += " + ";
                 }
@@ -92,17 +116,9 @@
                 {
                     newString += " - ";
                 }
-                newString += $"{Math.Abs(Coefficients[i])}x^{i}";
+
+                newString += $"{Math.Abs(Coefficients[i - 1])}";
             }
-            if (Coefficients[0] >= 0)
-            {
-                newString += " + ";
-            }
-            else
-            {
-                newString += " - ";
-            }
-            newString += $"{Math.Abs(Coefficients[0])}";
 
             return newString;
         }

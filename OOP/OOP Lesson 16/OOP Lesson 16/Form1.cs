@@ -68,6 +68,23 @@ namespace OOP_Lesson_16
             this.textBoxResultPolynomial.Text = _resultOfOperation.ToString();
         }
 
+        private void buttonFirstToString_Click(object sender, EventArgs e)
+        {
+            if (!TrySetUpPolynomial(ref _firstPolynomial, "Check out the first polynomial!", this.textBoxFirstPolynomial, this.textBoxFirstString) || _firstPolynomial == null)
+            {
+                return;
+            }
+            this.textBoxFirstString.Text = _firstPolynomial.ToString();
+        }
+        private void buttonSecondToString_Click(object sender, EventArgs e)
+        {
+            if (!TrySetUpPolynomial(ref _secondPolynomial, "Check out the second polynomial!", this.textBoxSecondPolynomial, this.textBoxSecondString) || _secondPolynomial == null)
+            {
+                return;
+            }
+            this.textBoxSecondString.Text = _secondPolynomial.ToString();
+        }
+
         private void buttonEvaluateFirst_Click(object sender, EventArgs e)
         {
             if (!TrySetUpPolynomial(ref _firstPolynomial, "Check out the first polynomial!", this.textBoxFirstPolynomial, this.textBoxResultOfEvaluating) || _firstPolynomial == null)
@@ -141,6 +158,7 @@ namespace OOP_Lesson_16
         private Polynomial? GetPolynomialFromText(string text, out bool isCorrectText)
         {
             List<double> coefficients = ParseToDoubleList(text, out isCorrectText);
+            coefficients.Reverse();
             if (!isCorrectText)
             {
                 return null;
@@ -166,5 +184,6 @@ namespace OOP_Lesson_16
             isCorrectText = true;
             return result;
         }
+
     }
 }

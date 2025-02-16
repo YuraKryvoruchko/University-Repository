@@ -45,6 +45,10 @@
             buttonEvaluateFirst = new Button();
             label6 = new Label();
             textBoxResultOfEvaluating = new TextBox();
+            buttonFirstToString = new Button();
+            buttonSecondToString = new Button();
+            textBoxFirstString = new TextBox();
+            textBoxSecondString = new TextBox();
             SuspendLayout();
             // 
             // label1
@@ -70,9 +74,9 @@
             // label4
             // 
             label4.Font = new Font("Segoe UI", 14F);
-            label4.Location = new Point(12, 216);
+            label4.Location = new Point(12, 317);
             label4.Name = "label4";
-            label4.Size = new Size(286, 69);
+            label4.Size = new Size(255, 69);
             label4.TabIndex = 3;
             label4.Text = "Result of:";
             label4.TextAlign = ContentAlignment.MiddleRight;
@@ -80,7 +84,7 @@
             // label5
             // 
             label5.Font = new Font("Segoe UI", 14F);
-            label5.Location = new Point(12, 285);
+            label5.Location = new Point(12, 386);
             label5.Name = "label5";
             label5.Size = new Size(42, 69);
             label5.TabIndex = 4;
@@ -103,7 +107,7 @@
             // 
             // buttonAdd
             // 
-            buttonAdd.Location = new Point(12, 161);
+            buttonAdd.Location = new Point(12, 262);
             buttonAdd.Name = "buttonAdd";
             buttonAdd.Size = new Size(250, 52);
             buttonAdd.TabIndex = 7;
@@ -113,7 +117,7 @@
             // 
             // buttonSubtract
             // 
-            buttonSubtract.Location = new Point(275, 161);
+            buttonSubtract.Location = new Point(275, 262);
             buttonSubtract.Name = "buttonSubtract";
             buttonSubtract.Size = new Size(250, 52);
             buttonSubtract.TabIndex = 8;
@@ -123,7 +127,7 @@
             // 
             // buttonMultiply
             // 
-            buttonMultiply.Location = new Point(538, 161);
+            buttonMultiply.Location = new Point(538, 262);
             buttonMultiply.Name = "buttonMultiply";
             buttonMultiply.Size = new Size(250, 52);
             buttonMultiply.TabIndex = 9;
@@ -133,15 +137,15 @@
             // 
             // textBoxResultPolynomial
             // 
-            textBoxResultPolynomial.Location = new Point(299, 239);
+            textBoxResultPolynomial.Location = new Point(285, 340);
             textBoxResultPolynomial.Name = "textBoxResultPolynomial";
             textBoxResultPolynomial.ReadOnly = true;
-            textBoxResultPolynomial.Size = new Size(489, 31);
+            textBoxResultPolynomial.Size = new Size(503, 31);
             textBoxResultPolynomial.TabIndex = 10;
             // 
             // textBoxXValue
             // 
-            textBoxXValue.Location = new Point(60, 308);
+            textBoxXValue.Location = new Point(60, 409);
             textBoxXValue.Name = "textBoxXValue";
             textBoxXValue.Size = new Size(115, 31);
             textBoxXValue.TabIndex = 11;
@@ -149,7 +153,7 @@
             // 
             // buttonEvaluateFromResult
             // 
-            buttonEvaluateFromResult.Location = new Point(653, 297);
+            buttonEvaluateFromResult.Location = new Point(653, 398);
             buttonEvaluateFromResult.Name = "buttonEvaluateFromResult";
             buttonEvaluateFromResult.Size = new Size(135, 52);
             buttonEvaluateFromResult.TabIndex = 12;
@@ -160,7 +164,7 @@
             // label3
             // 
             label3.Font = new Font("Segoe UI", 14F);
-            label3.Location = new Point(181, 285);
+            label3.Location = new Point(181, 386);
             label3.Name = "label3";
             label3.Size = new Size(170, 69);
             label3.TabIndex = 13;
@@ -169,7 +173,7 @@
             // 
             // buttonEvaluateSecond
             // 
-            buttonEvaluateSecond.Location = new Point(506, 297);
+            buttonEvaluateSecond.Location = new Point(506, 398);
             buttonEvaluateSecond.Name = "buttonEvaluateSecond";
             buttonEvaluateSecond.Size = new Size(135, 52);
             buttonEvaluateSecond.TabIndex = 14;
@@ -179,7 +183,7 @@
             // 
             // buttonEvaluateFirst
             // 
-            buttonEvaluateFirst.Location = new Point(357, 297);
+            buttonEvaluateFirst.Location = new Point(357, 398);
             buttonEvaluateFirst.Name = "buttonEvaluateFirst";
             buttonEvaluateFirst.Size = new Size(135, 52);
             buttonEvaluateFirst.TabIndex = 15;
@@ -190,26 +194,66 @@
             // label6
             // 
             label6.Font = new Font("Segoe UI", 14F);
-            label6.Location = new Point(12, 357);
+            label6.Location = new Point(12, 458);
             label6.Name = "label6";
-            label6.Size = new Size(286, 69);
+            label6.Size = new Size(267, 69);
             label6.TabIndex = 16;
             label6.Text = "Result of evaluating:";
             label6.TextAlign = ContentAlignment.MiddleRight;
             // 
             // textBoxResultOfEvaluating
             // 
-            textBoxResultOfEvaluating.Location = new Point(299, 380);
+            textBoxResultOfEvaluating.Location = new Point(285, 481);
             textBoxResultOfEvaluating.Name = "textBoxResultOfEvaluating";
             textBoxResultOfEvaluating.ReadOnly = true;
-            textBoxResultOfEvaluating.Size = new Size(489, 31);
+            textBoxResultOfEvaluating.Size = new Size(503, 31);
             textBoxResultOfEvaluating.TabIndex = 17;
+            // 
+            // buttonFirstToString
+            // 
+            buttonFirstToString.Location = new Point(12, 150);
+            buttonFirstToString.Name = "buttonFirstToString";
+            buttonFirstToString.Size = new Size(391, 52);
+            buttonFirstToString.TabIndex = 18;
+            buttonFirstToString.Text = "First to string";
+            buttonFirstToString.UseVisualStyleBackColor = true;
+            buttonFirstToString.Click += buttonFirstToString_Click;
+            // 
+            // buttonSecondToString
+            // 
+            buttonSecondToString.Location = new Point(409, 150);
+            buttonSecondToString.Name = "buttonSecondToString";
+            buttonSecondToString.Size = new Size(379, 52);
+            buttonSecondToString.TabIndex = 19;
+            buttonSecondToString.Text = "Second to string";
+            buttonSecondToString.UseVisualStyleBackColor = true;
+            buttonSecondToString.Click += buttonSecondToString_Click;
+            // 
+            // textBoxFirstString
+            // 
+            textBoxFirstString.Location = new Point(12, 208);
+            textBoxFirstString.Name = "textBoxFirstString";
+            textBoxFirstString.ReadOnly = true;
+            textBoxFirstString.Size = new Size(391, 31);
+            textBoxFirstString.TabIndex = 20;
+            // 
+            // textBoxSecondString
+            // 
+            textBoxSecondString.Location = new Point(409, 208);
+            textBoxSecondString.Name = "textBoxSecondString";
+            textBoxSecondString.ReadOnly = true;
+            textBoxSecondString.Size = new Size(379, 31);
+            textBoxSecondString.TabIndex = 21;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 431);
+            ClientSize = new Size(800, 547);
+            Controls.Add(textBoxSecondString);
+            Controls.Add(textBoxFirstString);
+            Controls.Add(buttonSecondToString);
+            Controls.Add(buttonFirstToString);
             Controls.Add(textBoxResultOfEvaluating);
             Controls.Add(label6);
             Controls.Add(buttonEvaluateFirst);
@@ -252,5 +296,9 @@
         private Button buttonEvaluateFirst;
         private Label label6;
         private TextBox textBoxResultOfEvaluating;
+        private Button buttonFirstToString;
+        private Button buttonSecondToString;
+        private TextBox textBoxFirstString;
+        private TextBox textBoxSecondString;
     }
 }
