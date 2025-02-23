@@ -12,7 +12,7 @@ public:
 		: Value(value), NextNode(next) {}
 
 	friend std::ostream& operator <<(std::ostream& os, const LinkedListNode<T>& node) {
-		return os << "[" + toString(node.Value) + "]";
+		return os << '[' << node.Value << ']';
 	}
 };
 

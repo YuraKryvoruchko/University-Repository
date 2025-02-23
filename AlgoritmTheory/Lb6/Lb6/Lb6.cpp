@@ -2,41 +2,101 @@
 //
 
 #include <iostream>
-#include "toString.h"
+#include <functional>
 #include "LinkedListNode.h"
 #include "LinkedList.h"
 
-class Test {
-public:
-	int A;
-	friend std::ostream& operator <<(std::ostream& os, const Test& test) {
-		return os << std::to_string(test.A);
+using namespace std;
+
+void viewAddLastScreen(LinkedList<int>& list) {
+	system("cls");
+	cout << "Input value: ";
+	int value = 0;
+	cin >> value;
+	list.addLast(new LinkedListNode<int>(value));
+}
+void viewAddAfterScreen(LinkedList<int>& list) {
+	system("cls");
+	cout << "Input the node number: ";
+	int i = 0, value = 0;
+	cin >> i;
+	if (i > list.getCount() || i < 1) {
+		cout << "You inputed the invalid number! Try again!";
+		system("pause");
+		return;
 	}
-};
+
+	cout << "Input value: ";
+	cin >> value;
+	list.addAfter(i - 1, new LinkedListNode<int>(value));
+}
+void viewGetCountElementsByConditionScreen(LinkedList<int>& list) {
+	system("cls");
+	int number = 0;	
+	cout << "Input the number to compare with: ";
+	cin >> number;
+
+	cout << "\nChoose the condition:" << endl;
+	cout << "1. >" << endl;
+	cout << "2. >=" << endl;
+	cout << "3. <" << endl;
+	cout << "4. <=" << endl;
+	cout << "5. ==" << endl;
+	cout << "6. !=" << endl;
+
+	std::function<bool(int)> condition = nullptr;
+	bool isContinue = true;
+	while (isContinue) {
+		isContinue = false;
+
+		cout << "Condition: ";
+		char command = 0;
+		cin >> command;
+
+		switch (command) {
+		case '1': condition = [number](int value) { return value > number; };  break;
+		case '2': condition = [number](int value) { return value >= number; }; break;
+		case '3': condition = [number](int value) { return value < number; }; break;
+		case '4': condition = [number](int value) { return value <= number; }; break;
+		case '5': condition = [number](int value) { return value == number; }; break;
+		case '6': condition = [number](int value) { return value != number; }; break;
+		default: isContinue = true; cout << "Invalid command!" << endl; break;
+		}
+	}
+	cout << "Number of elements by condition: " << list.getNumberByCondition(condition) << endl;
+	system("pause");
+}
+void handleInvalidInput() {
+	cout << "You inputed the invalid command! Try again!";
+	system("pause");
+}
 
 int main()
 {
-	Test test, test2, test3;
-	test.A = 14;
-	test2.A = 19;
-	test3.A = -2;
+	LinkedList<int> list;
 
-	LinkedList<Test> linkedList;
-	linkedList.addFirst(test);
-	linkedList.addLast(test2);
-	linkedList.addLast(test3);
+	bool isContinue = true;
+	while (isContinue) {
+		system("cls");
+		cout << "1. Add last" << endl;
+		cout << "2. Add after" << endl;
+		cout << "3. Remove the last" << endl;
+		cout << "4. Get count by prediction" << endl;
+		cout << "5. Exit" << endl;
+		cout << "Your list: " << list << endl;
+		cout << "Element cout: " << list.getCount() << endl;
+		cout << "\nInput command: ";
+		char command = 0;
+		cin >> command;
+		switch (command) {
+		case '1': viewAddLastScreen(list);						break;
+		case '2': viewAddAfterScreen(list);						break;
+		case '3': delete list.removeLast();						break;
+		case '4': viewGetCountElementsByConditionScreen(list);	break;
+		case '5': isContinue = false;							break;
+		default: handleInvalidInput();							break;
+		}
+	}
 
-	std::string text = linkedList.toString();
-	std::cout << text;
+ 	return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
