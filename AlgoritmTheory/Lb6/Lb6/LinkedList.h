@@ -14,7 +14,7 @@ public:
 	int getCount() const {
 		return _count;
 	}
-	int getNumberByCondition(std::function<bool(int)> condition) const {
+	int getNumberByCondition(std::function<bool(T)> condition) const {
 		int number = 0;
 		LinkedListNode<T>* next = _first;
 		while (next != nullptr) {
@@ -33,7 +33,7 @@ public:
 		return _last;
 	}
 	void addLast(LinkedListNode<T>* node) {
-		if (_last == nullptr) {
+		if (_count == 0) {
 			_first = node;
 			_last = node;
 		}
@@ -44,9 +44,15 @@ public:
 		_count++;
 	}
 	void addAfter(LinkedListNode<T>* node, LinkedListNode<T>* after) {
-		LinkedListNode<T>* next = node->NextNode;
-		node->NextNode = after;
-		after->NextNode = next;
+		if (node == _last) {
+			_last->NextNode = after;
+			_last = after;
+		}
+		else {
+			LinkedListNode<T>* next = node->NextNode;
+			node->NextNode = after;
+			after->NextNode = next;
+		}
 		_count++;
 	}
 	void addAfter(int index, LinkedListNode<T>* after) {
@@ -63,7 +69,10 @@ public:
 	}
 	LinkedListNode<T>* removeLast() {
 		LinkedListNode<T>* removedNode = _last; 
-		if (_count == 1) {
+		if (_count == 0) {
+			throw std::invalid_argument("Cannot remove the last node because it does not exist in the list");
+		}
+		else if (_count == 1) {
 			_first = nullptr;
 			_last = nullptr;
 			_count--;
