@@ -22,7 +22,11 @@ public:
 		delete nodePtr;
 		return value;
 	}
-	T peek() {
+	T peek() const {
+		if (_count == 0) {
+			throw std::exception("Cannot peek the last element because it does not exist in the stack");
+		}
+
 		return _last->Value;
 	}
 	void clear() {
@@ -50,7 +54,7 @@ private:
 	LinkedListNode<T>* removeLast() {
 		LinkedListNode<T>* removedNode = _last; 
 		if (_count == 0) {
-			throw std::invalid_argument("Cannot remove the last node because it does not exist in the list");
+			throw std::exception("Cannot remove the last node because it does not exist in the stack");
 		}
 		else if (_count == 1) {
 			_first = _last = nullptr;
@@ -68,16 +72,16 @@ private:
 		return removedNode;
 	}
 
-	friend std::ostream& operator <<(std::ostream& os, const Stack<T>& list) {
-		if (list.getCount() == 0) {
+	friend std::ostream& operator <<(std::ostream& os, const Stack<T>& stack) {
+		if (stack.getCount() == 0) {
 			return os;
 		}
 
-		auto next = list.getFirst();
+		auto next = stack.getFirst();
 		os << *next;
 		while (next->NextNode != nullptr) {
 			next = next->NextNode;
-			os << " -> " << *next;
+			os << " <- " << *next;
 		}
 		return os;
 	}

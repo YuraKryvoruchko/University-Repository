@@ -13,28 +13,36 @@ public:
 	int getCount() const {
 		return _count;
 	}
-	void enqueueLeft(T value) {
+	void pushLeft(T value) {
 		addFirst(new LinkedListNode<int>(value, nullptr));
 	}
-	void enqueueRight(T value) {
+	void pushRight(T value) {
 		addLast(new LinkedListNode<T>(value, nullptr));
 	}
-	T dequeueLeft() {
+	T popLeft() {
 		LinkedListNode<T>* nodePtr = removeFirst();
 		T value = nodePtr->Value;
 		delete nodePtr;
 		return value;
 	}
-	T dequeueRight() {
+	T popRight() {
 		LinkedListNode<T>* nodePtr = removeLast();
 		T value = nodePtr->Value;
 		delete nodePtr;
 		return value;
 	}
-	T peekLeft() {
+	T peekLeft() const {
+		if (_count == 0) {
+			throw std::exception("Cannot peek the element because it does not exist in the deque");
+		}
+
 		return _left->Value;
 	}
-	T peekRight() {
+	T peekRight() const {
+		if (_count == 0) {
+			throw std::exception("Cannot peek the element because it does not exist in the deque");
+		}
+
 		return _right->Value;
 	}
 	void clear() {
@@ -105,12 +113,12 @@ private:
 		return removedNode;
 	}
 
-	friend std::ostream& operator <<(std::ostream& os, const Deque<T>& list) {
-		if (list.getCount() == 0) {
+	friend std::ostream& operator <<(std::ostream& os, const Deque<T>& deque) {
+		if (deque.getCount() == 0) {
 			return os;
 		}
 
-		auto next = list.getFirst();
+		auto next = deque.getFirst();
 		os << *next;
 		while (next->NextNode != nullptr) {
 			next = next->NextNode;

@@ -22,7 +22,11 @@ public:
 		delete nodePtr;
 		return value;
 	}
-	T peek() {
+	T peek() const {
+		if (_count == 0) {
+			throw std::exception("Cannot peek the element because it does not exist in the queue");
+		}
+
 		return _first->Value;
 	}
 	void clear() {
@@ -82,12 +86,12 @@ private:
 		return removedNode;
 	}
 
-	friend std::ostream& operator <<(std::ostream& os, const Queue<T>& list) {
-		if (list.getCount() == 0) {
+	friend std::ostream& operator <<(std::ostream& os, const Queue<T>& queue) {
+		if (queue.getCount() == 0) {
 			return os;
 		}
 
-		auto next = list.getFirst();
+		auto next = queue.getFirst();
 		os << *next;
 		while (next->NextNode != nullptr) {
 			next = next->NextNode;
