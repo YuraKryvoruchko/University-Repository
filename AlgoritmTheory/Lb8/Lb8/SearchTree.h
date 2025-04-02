@@ -30,6 +30,12 @@ public:
 	bool isContains(K key) {
 		return searchNode(_coreNodePtr, key) != nullptr;
 	}
+	int getHeight() {
+		return getHeightFrom(_coreNodePtr);
+	}
+	int getDepth(K key) {
+		return getDepthFrom(_coreNodePtr, key);
+	}
 private:
 	void addNode(TreeNode<T, K>* corePtr, TreeNode<T, K>* nodePtr) {
 		if (nodePtr->Key < corePtr->Key) {
@@ -113,6 +119,27 @@ private:
 		}
 		return node;
 	}
+	int getHeightFrom(TreeNode<T, K>* node) {
+		if (node == nullptr) {
+			return 0;
+		}
+
+		int leftHeight = getHeightFrom(node->Left) + 1;
+		int rightHeight = getHeightFrom(node->Right) + 1;
+		return leftHeight > rightHeight ? leftHeight : rightHeight;
+	}
+	int getDepthFrom(TreeNode<T, K>* node, K key) {
+		if (node == nullptr) {
+			return 0;
+		}
+		else if (node->Key == key) {
+			return 1;
+		}
+		else {
+			int result = key < node->Key ? getDepthFrom(node->Left, key) : getDepthFrom(node->Right, key);
+			return result >= 1 ? result + 1 : 0;
+		}
+	}
 	void printTree(std::ostream& os, TreeNode<T, K>* node ) const {
 		if (node == nullptr) {
 			return;
@@ -125,5 +152,4 @@ private:
 		searchTree.printTree(os, searchTree._coreNodePtr);
 		return os;
 	}
-	
 };

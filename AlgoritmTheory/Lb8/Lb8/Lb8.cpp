@@ -18,7 +18,9 @@ int main()
         cout << "1. Add element" << endl;
         cout << "2. Is constains element" << endl;
         cout << "3. Delete element" << endl;
-        cout << "4. Exit" << endl;
+        cout << "4. Get height of tree" << endl;
+        cout << "5. Get depth for element" << endl;
+        cout << "6. Exit" << endl;
         cout << "Your tree: " << tree << endl;
         cout << "Element cout: " << tree.getCount() << endl;
         cout << "\nInput command: ";
@@ -43,6 +45,16 @@ int main()
             tree.remove(value);
             break;
         case '4':
+            cout << "Height of tree: " << tree.getHeight() << endl;
+            system("pause");
+            break;
+        case '5':
+            cout << "Enter key: ";
+            cin >> value;
+            cout << "Depth of " << '[' << value << ']' << " element: " << tree.getDepth(value) << endl;
+            system("pause");
+            break;
+        case '6':
             isContinue = false;
             break;
         default: handleInvalidInput();
