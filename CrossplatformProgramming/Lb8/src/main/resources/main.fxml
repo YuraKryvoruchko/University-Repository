@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
+    
+    <!-- Верхня панель: Незвичний Меню Бар -->
+    <top>
+        <MenuBar>
+            <menus>
+                <Menu text="File">
+                    <items>
+                        <MenuItem text="New" />
+                        <MenuItem text="Open" />
+                        <MenuItem text="Save" />
+                        <SeparatorMenuItem />
+                        <MenuItem text="Exit" />
+                    </items>
+                </Menu>
+                <Menu text="Help">
+                    <items>
+                        <MenuItem text="About" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    
+    <!-- Центральна частина: Вкладки з таблицями -->
+    <center>
+        <TabPane fx:id="tabPane">
+            <tabs>
+                <!-- Вкладка "Потяги" -->
+                <Tab text="Потяги">
+                    <content>
+                        <VBox spacing="10">
+                            <padding>
+                                <Insets bottom="15" left="15" right="15" top="15" />
+                            </padding>
+                            <!-- Таблиця для даних про потяги -->
+                            <TableView fx:id="trainTable">
+                                <columns>
+                                    <TableColumn fx:id="trainNumberColumn" text="Номер потяга" />
+                                    <TableColumn fx:id="finalStationColumn" text="Кінцева станція" />
+                                    <TableColumn fx:id="passingStationsColumn" text="Станції проходження" />
+                                    <TableColumn fx:id="departureTimeColumn" text="Час відправлення" />
+                                    <TableColumn fx:id="travelTimeColumn" text="Час у дорозі" />
+                                    <TableColumn fx:id="arrivalTimeColumn" text="Час прибуття" />
+                                    <TableColumn fx:id="stopDurationColumn" text="Тривалість зупинок" />
+                                    <TableColumn fx:id="trainTypeColumn" text="Тип поїзда" />
+                                </columns>
+                            </TableView>
+                            <!-- Панель кнопок -->
+                            <HBox spacing="10" style="-fx-alignment: center;">
+                                <Button fx:id="addTrainButton" text="Додати" />
+                                <Button fx:id="editTrainButton" text="Редагувати" />
+                                <Button fx:id="deleteTrainButton" text="Видалити" />
+                            </HBox>
+                        </VBox>
+                    </content>
+                </Tab>
+                
+                <!-- Вкладка "Квитки" -->
+                <Tab text="Квитки">
+                    <content>
+                        <VBox spacing="10">
+                            <padding>
+                                <Insets bottom="15" left="15" right="15" top="15" />
+                            </padding>
+                            <!-- Таблиця для даних про квитки -->
+                            <TableView fx:id="ticketTable">
+                                <columns>
+                                    <TableColumn fx:id="ticketNumberColumn" text="Номер квитка" />
+                                    <TableColumn fx:id="ticketTrainNumberColumn" text="Номер поїзда" />
+                                    <TableColumn fx:id="ticketWagonNumberColumn" text="Номер вагона" />
+                                    <TableColumn fx:id="seatNumberColumn" text="Номер місця" />
+                                    <TableColumn fx:id="passportDataColumn" text="Паспортні дані" />
+                                    <TableColumn fx:id="departureDateColumn" text="Дата відправлення" />
+                                    <TableColumn fx:id="passengerFinalStationColumn" text="Кінцева станція маршруту" />
+                                    <TableColumn fx:id="boardingStationColumn" text="Станція посадки" />
+                                    <TableColumn fx:id="destinationStationColumn" text="Станція призначення" />
+                                    <TableColumn fx:id="wagonTypeColumn" text="Тип вагона" />
+                                    <TableColumn fx:id="ticketPriceColumn" text="Вартість квитка" />
+                                </columns>
+                            </TableView>
+                            <!-- Панель кнопок -->
+                            <HBox spacing="10">
+                                <Button fx:id="addTicketButton" text="Додати" />
+                                <Button fx:id="editTicketButton" text="Редагувати" />
+                                <Button fx:id="deleteTicketButton" text="Видалити" />
+                            </HBox>
+                        </VBox>
+                    </content>
+                </Tab>
+                
+                <!-- Вкладка "Користувачі" -->
+                <Tab text="Користувачі">
+                    <content>
+                        <VBox spacing="10">
+                            <padding>
+                                <Insets bottom="15" left="15" right="15" top="15" />
+                            </padding>
+                            <!-- Таблиця для даних про користувачів -->
+                            <TableView fx:id="userTable">
+                                <columns>
+                                    <TableColumn fx:id="userIdColumn" text="ID" />
+                                    <TableColumn fx:id="usernameColumn" text="Ім'я користувача" />
+                                    <TableColumn fx:id="roleColumn" text="Роль" />
+                                </columns>
+                            </TableView>
+                            <!-- Панель кнопок -->
+                            <HBox spacing="10">
+                                <Button fx:id="addUserButton" text="Додати" />
+                                <Button fx:id="editUserButton" text="Редагувати" />
+                                <Button fx:id="deleteUserButton" text="Видалити" />
+                            </HBox>
+                        </VBox>
+                    </content>
+                </Tab>
+                
+                <!-- Вкладка "Станції" -->
+                <Tab text="Станції">
+                    <content>
+                        <VBox spacing="10">
+                            <padding>
+                                <Insets bottom="15" left="15" right="15" top="15" />
+                            </padding>
+                            <!-- Таблиця для даних про станції -->
+                            <TableView fx:id="stationTable">
+                                <columns>
+                                    <TableColumn fx:id="stationIdColumn" text="ID" />
+                                    <TableColumn fx:id="stationNameColumn" text="Назва станції" />
+                                    <TableColumn fx:id="stationLocationColumn" text="Місцезнаходження" />
+                                </columns>
+                            </TableView>
+                            <!-- Панель кнопок -->
+                            <HBox spacing="10" style="-fx-alignment: center;">
+                                <Button fx:id="addStationButton" text="Додати" />
+                                <Button fx:id="editStationButton" text="Редагувати" />
+                                <Button fx:id="deleteStationButton" text="Видалити" />
+                            </HBox>
+                        </VBox>
+                    </content>
+                </Tab>
+                
+                <!-- Вкладка "Вагони" -->
+                <Tab text="Вагони">
+                    <content>
+                        <VBox spacing="10">
+                            <padding>
+                                <Insets bottom="15" left="15" right="15" top="15" />
+                            </padding>
+                            <!-- Таблиця для даних про вагони -->
+                            <TableView fx:id="wagonTable">
+                                <columns>
+                                    <TableColumn fx:id="wagonNumberColumnWagon" text="Номер вагона" />
+                                    <TableColumn fx:id="wagonTypeColumnWagon" text="Тип вагона" />
+                                    <TableColumn fx:id="seatCountColumn" text="Кількість місць" />
+                                </columns>
+                            </TableView>
+                            <!-- Панель кнопок -->
+                            <HBox spacing="10" style="-fx-alignment: center;">
+                                <Button fx:id="addWagonButton" text="Додати" />
+                                <Button fx:id="editWagonButton" text="Редагувати" />
+                                <Button fx:id="deleteWagonButton" text="Видалити" />
+                            </HBox>
+                        </VBox>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+    
+    <!-- Нижня панель: Панель пошуку з креативним оформленням -->
+    <bottom>
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <padding>
+                <Insets bottom="10" left="15" right="15" top="10" />
+            </padding>
+            <Label text="Пошук:" />
+            <TextField fx:id="searchField" promptText="Введіть критерії пошуку..."/>
+            <Button fx:id="searchButton" text="Пошук" />
+        </HBox>
+    </bottom>
+</BorderPane>

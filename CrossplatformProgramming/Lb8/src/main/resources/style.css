@@ -1,0 +1,74 @@
+/* styles.css: Стандартний Windows-стиль */
+
+/* Загальні налаштування для всіх елементів */
+.root {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 12px;
+    -fx-background-color: #ffffff;
+}
+
+/* Кнопки */
+.button {
+    -fx-background-color: linear-gradient(to bottom, #ffffff, #e6e6e6);
+    -fx-text-fill: #000000;
+    -fx-border-color: #a6a6a6;
+    -fx-border-width: 1px;
+    -fx-border-radius: 2;
+    -fx-background-radius: 2;
+    -fx-padding: 4 10 4 10;
+}
+
+/* Підписи */
+.label {
+    -fx-text-fill: #000000;
+}
+
+/* Текстові поля та поля введення паролю */
+.text-field, .password-field {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #a6a6a6;
+    -fx-border-width: 1px;
+    -fx-border-radius: 2;
+    -fx-background-radius: 2;
+    -fx-padding: 4;
+}
+
+/* Меню та панель меню */
+.menu-bar {
+    -fx-background-color: linear-gradient(to bottom, #f0f0f0, #dcdcdc);
+    -fx-border-color: #a6a6a6;
+}
+.menu, .menu-item {
+    -fx-text-fill: #000000;
+}
+
+/* Таблиці */
+.table-view {
+    -fx-background-color: #ffffff;
+    -fx-control-inner-background: #ffffff;
+    -fx-table-cell-border-color: #d0d0d0;
+}
+.table-column-header {
+    -fx-background-color: linear-gradient(to bottom, #f0f0f0, #dcdcdc);
+    -fx-text-fill: #000000;
+    -fx-alignment: CENTER;
+    -fx-border-color: #a6a6a6;
+    -fx-border-width: 0 0 1 0;
+    -fx-font-weight: bold;
+}
+
+/* Вкладки */
+.tab-pane .tab-header-area {
+    -fx-background-color: #f0f0f0;
+    -fx-border-color: #a6a6a6;
+}
+
+/* Контейнери VBox та HBox - прозорий фон */
+.vbox, .hbox {
+    -fx-background-color: transparent;
+}
+
+/* AnchorPane */
+.anchor-pane {
+    -fx-background-color: #ffffff;
+}
