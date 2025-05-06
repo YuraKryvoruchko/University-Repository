@@ -8,6 +8,7 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 // Завантаження FXML-файлу
+        //Parent root = FXMLLoader.load(getClass().getResource("/main.fxml"));
         Parent root = FXMLLoader.load(getClass().getResource("/main.fxml"));
 // Створення сцени з кореневим елементом
         Scene scene = new Scene(root, 800, 600); // 800x600 розмір вікна

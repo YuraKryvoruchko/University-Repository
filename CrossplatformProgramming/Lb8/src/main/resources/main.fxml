@@ -16,8 +16,18 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
-    
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="root1" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
+
+    <fx:define>
+        <DropShadow fx:id="myShadow" radius="10" offsetX="5" offsetY="5" color="gray"/>
+        <Glow fx:id="myGlow" level="0.8"/>
+        <Reflection fx:id="myReflection" topOffset="5" topOpacity="0.7" bottomOpacity="0.3"/>
+    </fx:define>
+
     <!-- Верхня панель: Незвичний Меню Бар -->
     <top>
         <MenuBar>
@@ -33,7 +43,7 @@
                 </Menu>
                 <Menu text="Help">
                     <items>
-                        <MenuItem text="About" />
+                        <MenuItem text="About"/>
                     </items>
                 </Menu>
             </menus>
@@ -54,7 +64,7 @@
                             <!-- Таблиця для даних про потяги -->
                             <TableView fx:id="trainTable">
                                 <columns>
-                                    <TableColumn fx:id="trainNumberColumn" text="Номер потяга" />
+                                    <TableColumn fx:id="trainNumberColumn" text="Номер потяга"/>
                                     <TableColumn fx:id="finalStationColumn" text="Кінцева станція" />
                                     <TableColumn fx:id="passingStationsColumn" text="Станції проходження" />
                                     <TableColumn fx:id="departureTimeColumn" text="Час відправлення" />
@@ -66,9 +76,9 @@
                             </TableView>
                             <!-- Панель кнопок -->
                             <HBox spacing="10" style="-fx-alignment: center;">
-                                <Button fx:id="addTrainButton" text="Додати" />
-                                <Button fx:id="editTrainButton" text="Редагувати" />
-                                <Button fx:id="deleteTrainButton" text="Видалити" />
+                                <Button fx:id="addTrainButton" text="Додати" effect="$myShadow"/>
+                                <Button fx:id="editTrainButton" text="Редагувати" effect="$myGlow"/>
+                                <Button fx:id="deleteTrainButton" text="Видалити" effect="$myReflection"/>
                             </HBox>
                         </VBox>
                     </content>
@@ -187,11 +197,11 @@
     
     <!-- Нижня панель: Панель пошуку з креативним оформленням -->
     <bottom>
-        <HBox alignment="CENTER_LEFT" spacing="10">
+        <HBox fx:id="bottomBox" alignment="CENTER_LEFT" spacing="10" effect="$myShadow">
             <padding>
                 <Insets bottom="10" left="15" right="15" top="10" />
             </padding>
-            <Label text="Пошук:" />
+            <Label text="Пошук:"/>
             <TextField fx:id="searchField" promptText="Введіть критерії пошуку..."/>
             <Button fx:id="searchButton" text="Пошук" />
         </HBox>

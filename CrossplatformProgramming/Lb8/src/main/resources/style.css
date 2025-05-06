@@ -42,6 +42,14 @@
     -fx-text-fill: #000000;
 }
 
+.menu-item:hover {
+    -fx-background-color: #FF69B4;
+    -fx-font-weight: bold;
+}
+.menu-item:hover .label {
+    -fx-text-fill: white;
+}
+
 /* Таблиці */
 .table-view {
     -fx-background-color: #ffffff;
