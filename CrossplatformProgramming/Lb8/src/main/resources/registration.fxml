@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controllers.RegistrationController"
+      spacing="10" alignment="CENTER">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Заголовок форми -->
+    <Label text="Реєстрація користувача" style="-fx-font-size: 18px;"/>
+    <!-- Поле для введення логіну -->
+    <TextField fx:id="usernameField" promptText="Введіть логін"/>
+    <!-- Поле для введення пароля -->
+    <PasswordField fx:id="passwordField" promptText="Введіть пароль"/>
+    <!-- Поле для підтвердження пароля -->
+    <PasswordField fx:id="confirmPasswordField" promptText="Підтвердіть пароль"/>
+    <!-- Панель з кнопками -->
+    <HBox spacing="10" alignment="CENTER">
+        <Button fx:id="registerButton" text="Зареєструватися"/>
+        <Button fx:id="cancelButton" text="Скасувати"/>
+    </HBox>
+</VBox>
