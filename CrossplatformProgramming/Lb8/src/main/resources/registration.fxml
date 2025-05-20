@@ -19,6 +19,8 @@
     <Label text="Реєстрація користувача" style="-fx-font-size: 18px;"/>
     <!-- Поле для введення логіну -->
     <TextField fx:id="usernameField" promptText="Введіть логін"/>
+
+    <TextField fx:id="emailField" promptText="Email"/>
     <!-- Поле для введення пароля -->
     <PasswordField fx:id="passwordField" promptText="Введіть пароль"/>
     <!-- Поле для підтвердження пароля -->

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.TrainController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <VBox spacing="10" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <padding>
+            <Insets bottom="15" left="15" right="15" top="15" />
+        </padding>
+        <!-- Таблиця для даних про потяги -->
+        <TableView fx:id="trainTable">
+            <columns>
+                <TableColumn fx:id="trainNumberColumn" text="Номер потяга" />
+                <TableColumn fx:id="finalStationColumn" text="Кінцева станція" />
+                <TableColumn fx:id="passingStationsColumn" text="Станції проходження" />
+                <TableColumn fx:id="departureTimeColumn" text="Час відправлення" />
+                <TableColumn fx:id="travelTimeColumn" text="Час у дорозі" />
+                <TableColumn fx:id="arrivalTimeColumn" text="Час прибуття" />
+                <TableColumn fx:id="stopDurationColumn" prefWidth="81.00003051757812" text="Тривалість зупинок" />
+                <TableColumn fx:id="trainTypeColumn" prefWidth="79.0" text="Тип поїзда" />
+            </columns>
+        </TableView>
+        <!-- Панель кнопок -->
+        <HBox spacing="10" style="-fx-alignment: center;">
+            <Button fx:id="addTrainButton" text="Додати" />
+            <Button fx:id="editTrainButton" text="Редагувати" />
+            <Button fx:id="deleteTrainButton" text="Видалити" />
+        </HBox>
+    </VBox>
+</AnchorPane>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.UserController"
+            prefHeight="400.0" prefWidth="600.0">
+    <VBox spacing="10" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <padding>
+            <Insets bottom="15" left="15" right="15" top="15" />
+        </padding>
+        <!-- Таблиця для даних про користувачів -->
+        <TableView fx:id="userTable">
+            <columns>
+                <TableColumn fx:id="userIdColumn" text="ID" />
+                <TableColumn fx:id="usernameColumn" text="Ім'я користувача" />
+                <TableColumn fx:id="roleColumn" text="Роль" />
+            </columns>
+        </TableView>
+        <!-- Панель кнопок -->
+        <HBox spacing="10" style="-fx-alignment: center;">
+            <Button fx:id="addUserButton" text="Додати" />
+            <Button fx:id="editUserButton" text="Редагувати" />
+            <Button fx:id="deleteUserButton" text="Видалити" />
+        </HBox>
+    </VBox>
+</AnchorPane>

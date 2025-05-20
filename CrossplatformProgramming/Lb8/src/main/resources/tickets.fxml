@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.TicketController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <VBox spacing="10" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <padding>
+            <Insets bottom="15" left="15" right="15" top="15" />
+        </padding>
+        <!-- Таблиця для даних про квитки -->
+        <TableView fx:id="ticketTable">
+            <columns>
+                <TableColumn fx:id="ticketNumberColumn" text="Номер квитка" />
+                <TableColumn fx:id="ticketTrainNumberColumn" text="Номер поїзда" />
+                <TableColumn fx:id="ticketWagonNumberColumn" text="Номер вагона" />
+                <TableColumn fx:id="seatNumberColumn" text="Номер місця" />
+                <TableColumn fx:id="passportDataColumn" text="Паспортні дані" />
+                <TableColumn fx:id="departureDateColumn" prefWidth="75.3333740234375" text="Дата відправлення" />
+                <TableColumn fx:id="firstRouteStationColumn" minWidth="0.0" prefWidth="86.6666259765625" text="Початкова станція маршруту" />
+                <TableColumn fx:id="lastRouteStationColumn" minWidth="0.0" prefWidth="86.6666259765625" text="Кінцева станція маршруту" />
+                <TableColumn fx:id="boardingStationColumn" minWidth="0.0" prefWidth="71.33331298828125" text="Станція посадки" />
+                <TableColumn fx:id="destinationStationColumn" minWidth="0.0" prefWidth="81.3333740234375" text="Станція призначення" />
+                <TableColumn fx:id="wagonTypeColumn" prefWidth="68.6666259765625" text="Тип вагона" />
+                <TableColumn fx:id="ticketPriceColumn" prefWidth="103.0" text="Вартість квитка" />
+            </columns>
+        </TableView>
+        <!-- Панель кнопок -->
+        <HBox spacing="10" style="-fx-alignment: center;">
+            <Button fx:id="addTicketButton" text="Додати" />
+            <Button fx:id="editTicketButton" text="Редагувати" />
+            <Button fx:id="deleteTicketButton" text="Видалити" />
+        </HBox>
+    </VBox>
+</AnchorPane>

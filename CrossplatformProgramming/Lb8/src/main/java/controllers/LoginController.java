@@ -72,10 +72,10 @@ public class LoginController {
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("/main.fxml"));
                 Scene scene = new Scene(root, 800, 600);
-                scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+                scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
                 Stage stage = (Stage) loginButton.getScene().getWindow();
                 stage.setScene(scene);
-                stage.setTitle("Мій JavaFX додаток");
+                stage.setTitle("Криворучко Ю.В. 205-ТН");
             } catch (Exception e) {
                 e.printStackTrace();
                 showAlert(Alert.AlertType.ERROR, "Помилка", "Неможливо завантажити головне вікно");

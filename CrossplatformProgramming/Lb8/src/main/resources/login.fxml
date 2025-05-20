@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane fx:id="root1" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController" >
     <children>
         <fx:define>
             <DropShadow fx:id="myShadow" radius="10" offsetX="5" offsetY="5" color="gray"/>
@@ -15,13 +15,14 @@
             <Reflection fx:id="myReflection" topOffset="5" topOpacity="0.7" bottomOpacity="0.3"/>
         </fx:define>
 
-        <VBox fx:id="vBox" alignment="CENTER" spacing="15">
+        <VBox fx:id="vBox" alignment="CENTER" spacing="15"  AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <padding>
                 <Insets bottom="20" left="20" right="20" top="20" />
             </padding>
-            <Label text="Вхід до системи" effect="$myGlow"/>
-            <TextField fx:id="loginField" promptText="Логін" effect="$myShadow"/>
-            <PasswordField fx:id="passwordField" promptText="Пароль" effect="$myShadow"/>
+            <Label text="Вхід до системи" effect="$myGlow" scaleX="2" scaleY="2"/>
+            <TextField fx:id="loginField" promptText="Логін" effect="$myShadow" maxWidth="500"/>
+            <PasswordField fx:id="passwordField" promptText="Пароль" effect="$myShadow" maxWidth="500"/>
             <Button fx:id="loginButton" text="Увійти" effect="$myShadow"/>
             <Button fx:id="registerButton" text="Реєстрація" effect="$myShadow"/>
         </VBox>

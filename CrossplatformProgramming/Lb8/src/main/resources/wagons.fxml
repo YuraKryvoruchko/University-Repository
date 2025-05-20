@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.WagonController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <VBox spacing="10" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <padding>
+            <Insets bottom="15" left="15" right="15" top="15" />
+        </padding>
+        <!-- Таблиця для даних про вагони -->
+        <TableView fx:id="wagonTable">
+            <columns>
+                <TableColumn fx:id="wagonNumberColumnWagon" prefWidth="115.99999749660492" text="Номер вагона" />
+                <TableColumn fx:id="wagonTypeColumnWagon" prefWidth="85.99999237060547" text="Тип вагона" />
+                <TableColumn fx:id="seatCountColumn" prefWidth="101.99998474121094" text="Кількість місць" />
+            </columns>
+        </TableView>
+        <!-- Панель кнопок -->
+        <HBox spacing="10" style="-fx-alignment: center;">
+            <Button fx:id="addWagonButton" text="Додати" />
+            <Button fx:id="editWagonButton" text="Редагувати" />
+            <Button fx:id="deleteWagonButton" text="Видалити" />
+        </HBox>
+    </VBox>
+</AnchorPane>

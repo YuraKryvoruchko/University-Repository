@@ -12,7 +12,7 @@ public class MainApp extends Application {
 // Створення сцени з кореневим елементом
         Scene scene = new Scene(root, 200, 250);
 // Налаштування заголовку та сцени для основного вікна
-        primaryStage.setTitle("Мій JavaFX додаток");
+        primaryStage.setTitle("Криворучко Ю.В. 205-ТН");
         primaryStage.setScene(scene);
 // Відображення вікна (за замовчуванням воно прямокутне)
         primaryStage.show();
