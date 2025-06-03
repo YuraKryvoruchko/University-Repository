@@ -110,9 +110,15 @@ public class WagonController {
                  PreparedStatement ps = conn.prepareStatement(sql)) {
                 ps.setString(1, edited.getNumber());
                 ps.setInt(2, edited.getTrainId());
+<<<<<<< HEAD
                 ps.setString(3, edited.getType().toString());
                 ps.setInt(4, edited.getSeats());
                 ps.setInt(5, edited.getId());
+=======
+                ps.setString(3, wagon.getType().toString());
+                ps.setInt(4, wagon.getSeats());
+                ps.setInt(5, wagon.getId());
+>>>>>>> e920fdb28acb29e05902aa96a4be1882e5164f88
                 ps.executeUpdate();
                 loadWagons();
             } catch (SQLException ex) {
@@ -228,7 +234,10 @@ public class WagonController {
         filteredList.setPredicate(p -> {
             if (lower.isEmpty()) return true;
             return p.getNumber().toLowerCase().contains(lower)
+<<<<<<< HEAD
                     || p.getType().toString().toLowerCase().contains(lower)
+=======
+>>>>>>> e920fdb28acb29e05902aa96a4be1882e5164f88
                     || String.valueOf(p.getId()).contains(lower);
         });
     }

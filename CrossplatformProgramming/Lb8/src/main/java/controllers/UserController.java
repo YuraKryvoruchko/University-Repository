@@ -200,9 +200,15 @@ public class UserController {
         filteredList.setPredicate(p -> {
             if (lower.isEmpty()) return true;
             return p.getUsername().toLowerCase().contains(lower)
+<<<<<<< HEAD
                     || p.getEmail().toLowerCase().contains(lower)
                     || p.getCategory().toString().toLowerCase().contains(lower)
                     || String.valueOf(p.getUserId()).toLowerCase().contains(lower);
+=======
+                    || p.getEmail().contains(lower)
+                    || p.getCategory().toString().contains(lower)
+                    || String.valueOf(p.getUserId()).contains(lower);
+>>>>>>> e920fdb28acb29e05902aa96a4be1882e5164f88
         });
     }
 }

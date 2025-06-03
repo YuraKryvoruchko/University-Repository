@@ -175,7 +175,11 @@ public class StationController {
         filteredList.setPredicate(p -> {
             if (lower.isEmpty()) return true;
             return p.getName().toLowerCase().contains(lower)
+<<<<<<< HEAD
                     || p.getLocation().toLowerCase().contains(lower)
+=======
+                    || p.getLocation().contains(lower)
+>>>>>>> e920fdb28acb29e05902aa96a4be1882e5164f88
                     || String.valueOf(p.getId()).contains(lower);
         });
     }
