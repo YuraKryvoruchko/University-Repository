@@ -2,12 +2,14 @@ package models;
 
 public class Wagon {
     private int id;
+    private String number;
     private int trainId;
     private WagonType type;
     private int seats;
 
-    public Wagon(int id, int trainId, WagonType type, int seats) {
+    public Wagon(int id, String wagonNumber, int trainId, WagonType type, int seats) {
         this.id = id;
+        this.number = wagonNumber;
         this.trainId = trainId;
         this.type = type;
         this.seats = seats;
@@ -23,6 +25,13 @@ public class Wagon {
     }
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getNumber(){
+        return this.number;
+    }
+    public void setNumber(String wagonNumber){
+        this.number = wagonNumber;
     }
 
     public int getTrainId() {
@@ -44,6 +53,11 @@ public class Wagon {
     }
     public void setSeats(int seats) {
         this.seats = seats;
+    }
+
+    @Override
+    public String toString(){
+        return number + " : " + id;
     }
 }
 

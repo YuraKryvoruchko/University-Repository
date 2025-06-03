@@ -31,6 +31,12 @@
                         <MenuItem text="About" />
                     </items>
                 </Menu>
+                <Menu text="Запити">
+                    <items>
+                        <MenuItem fx:id="query1MenuItem" text="Запит 1" onAction="#onQuery1" />
+                        <MenuItem fx:id="query2MenuItem" text="Запит 2" onAction="#onQuery2" />
+                    </items>
+                </Menu>
             </menus>
         </MenuBar>
     </top>
@@ -41,27 +47,27 @@
             <tabs>
                 <!-- Вкладка "Потяги" -->
                 <Tab text="Потяги">
-                    <fx:include source="trains.fxml"/>
+                    <fx:include fx:id="train" source="trains.fxml"/>
                 </Tab>
                 
                 <!-- Вкладка "Квитки" -->
                 <Tab text="Квитки">
-                    <fx:include source="tickets.fxml"/>
+                    <fx:include fx:id="ticket" source="tickets.fxml"/>
                 </Tab>
                 
                 <!-- Вкладка "Користувачі" -->
                 <Tab text="Користувачі">
-                    <fx:include source="users.fxml"/>
+                    <fx:include fx:id="user" source="users.fxml"/>
                 </Tab>
                 
                 <!-- Вкладка "Станції" -->
                 <Tab text="Станції">
-                    <fx:include source="stations.fxml"/>
+                    <fx:include fx:id="station" source="stations.fxml"/>
                 </Tab>
                 
                 <!-- Вкладка "Вагони" -->
                 <Tab text="Вагони">
-                    <fx:include source="wagons.fxml"/>
+                    <fx:include fx:id="wagon" source="wagons.fxml"/>
                 </Tab>
             </tabs>
         </TabPane>
