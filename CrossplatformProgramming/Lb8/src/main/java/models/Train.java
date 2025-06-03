@@ -89,4 +89,9 @@ public class Train {
     public void setType(TrainType type) {
         this.type = type;
     }
+
+    @Override
+    public String toString(){
+        return number + " : " + id;
+    }
 }

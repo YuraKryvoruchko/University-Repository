@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controllers.QueryResultController"
+      spacing="10" alignment="TOP_CENTER"
+      prefWidth="600" prefHeight="400">
+    <TableView fx:id="resultTable" prefWidth="580" prefHeight="330" />
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button fx:id="saveButton" text="Зберегти" onAction="#onSave" />
+        <Button fx:id="closeButton" text="Закрити" onAction="#onClose" />
+    </HBox>
+</VBox>
