@@ -138,10 +138,6 @@ public class TicketController {
                         rs.getFloat("ticket_price")
                 ));
             }
-<<<<<<< HEAD
-=======
-            ticketTable.setItems(ticketObservableList);
->>>>>>> e920fdb28acb29e05902aa96a4be1882e5164f88
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -376,7 +372,6 @@ public class TicketController {
         ChoiceBox<Train> trainIdChoiceBox = new ChoiceBox<>(FXCollections.observableList(getAllTrains()));
         trainIdChoiceBox.setValue(ticket == null ? null : ticket.getTrain());
 
-<<<<<<< HEAD
         ChoiceBox<Route> routeIdChoiceBox = new ChoiceBox<>();
         if(ticket != null) routeIdChoiceBox.setItems(FXCollections.observableList(getAllRoutesForTrainId(trainIdChoiceBox.getValue().getId())));
 
@@ -384,31 +379,16 @@ public class TicketController {
 
         ChoiceBox<Wagon> wagonChoiceBox = new ChoiceBox<>();
         if(ticket != null) wagonChoiceBox.setItems(FXCollections.observableList(getAllWagonsByTrainId(trainIdChoiceBox.getValue().getId())));
-=======
-        ChoiceBox<Route> routeIdChoiceBox = new ChoiceBox<>(ticket == null ? null :
-                FXCollections.observableList(getAllRoutesForTrainId(trainIdChoiceBox.getValue().getId())));
-        routeIdChoiceBox.setValue(ticket == null ? null : ticket.getRoute());
-
-        ChoiceBox<Wagon> wagonChoiceBox = new ChoiceBox<>(ticket == null ? null :
-                FXCollections.observableList(getAllWagonsByTrainId(trainIdChoiceBox.getValue().getId())));
->>>>>>> e920fdb28acb29e05902aa96a4be1882e5164f88
         wagonChoiceBox.setValue(ticket == null ? null : ticket.getWagon());
 
         TextField seatNumberField = new TextField(ticket == null ? null : String.valueOf(ticket.getSeat()));
         DatePicker datePicker = new DatePicker(ticket == null ? null : ticket.getDispatchDate().toLocalDate());
-<<<<<<< HEAD
         ChoiceBox<RouteStop> boardingStationChoiceBox = new ChoiceBox<>();
         if(ticket != null) boardingStationChoiceBox.setItems(FXCollections.observableList(getRouteStopsByRouteId(routeIdChoiceBox.getValue().getId())));
         boardingStationChoiceBox.setValue(ticket == null ? null : ticket.getFromRouteStop());
         ChoiceBox<RouteStop> destinationStationChoicebox = new ChoiceBox<>();
         if(ticket != null) destinationStationChoicebox.setItems(FXCollections.observableList(getRouteStopsByRouteId(routeIdChoiceBox.getValue().getId())));
-=======
-        ChoiceBox<RouteStop> boardingStationChoiceBox = new ChoiceBox<>(ticket == null ? null :
-                FXCollections.observableList(getRouteStopsByRouteId(routeIdChoiceBox.getValue().getId())));
-        boardingStationChoiceBox.setValue(ticket == null ? null : ticket.getFromRouteStop());
-        ChoiceBox<RouteStop> destinationStationChoicebox = new ChoiceBox<>(ticket == null ? null :
-                FXCollections.observableList(getRouteStopsByRouteId(routeIdChoiceBox.getValue().getId())));
->>>>>>> e920fdb28acb29e05902aa96a4be1882e5164f88
+
         destinationStationChoicebox.setValue(ticket == null ? null : ticket.getToRouteStop());
 
         trainIdChoiceBox.setOnAction(e -> {
