@@ -21,30 +21,36 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter A number:");
-            ComplexNumber a = ReadComplexNumberFromConsole();
-            Console.WriteLine("\nEnter B number:");
-            ComplexNumber b = ReadComplexNumberFromConsole();
-            Console.WriteLine($"\nA: {a}");
-            Console.WriteLine($"B: {b}");
-
-            try
+            bool isValid = false;
+            while(!isValid)
             {
-                double denominator = b.Real * b.Real + b.Imaginary * b.Imaginary;
-                if (denominator == 0)
-                    throw new DivideByZeroException("Cannot divide by zero complex number.");
+                Console.WriteLine("Enter A number:");
+                ComplexNumber a = ReadComplexNumberFromConsole();
+                Console.WriteLine("\nEnter B number:");
+                ComplexNumber b = ReadComplexNumberFromConsole();
+                Console.WriteLine($"\nA: {a}");
+                Console.WriteLine($"B: {b}");
 
-                double realPart = (a.Real * b.Real + a.Imaginary * b.Imaginary) / denominator;
-                double imagPart = (a.Imaginary * b.Real - a.Real * b.Imaginary) / denominator;
+                try
+                {
+                    double denominator = b.Real * b.Real + b.Imaginary * b.Imaginary;
+                    if (denominator == 0)
+                        throw new DivideByZeroException("Cannot divide by zero complex number.");
 
-                Console.WriteLine($"Result of the division: {new ComplexNumber(realPart, imagPart)}");
-            }
-            catch (DivideByZeroException exception)
-            {
-                ConsoleColor color = Console.ForegroundColor;
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(exception.Message);
-                Console.ForegroundColor = color;
+                    double realPart = (a.Real * b.Real + a.Imaginary * b.Imaginary) / denominator;
+                    double imagPart = (a.Imaginary * b.Real - a.Real * b.Imaginary) / denominator;
+
+                    Console.WriteLine($"Result of the division: {new ComplexNumber(realPart, imagPart)}");
+                    isValid = true;
+                }
+                catch (DivideByZeroException exception)
+                {
+                    ConsoleColor color = Console.ForegroundColor;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(exception.Message);
+                    Console.WriteLine("Try again!\n");
+                    Console.ForegroundColor = color;
+                }
             }
         }
 
