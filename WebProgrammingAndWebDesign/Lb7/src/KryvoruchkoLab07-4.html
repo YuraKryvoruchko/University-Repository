@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>Лабораторна робота №7 – Криворучко Юрій</title>
+        <meta charset="UTF8">
+        <meta name="Description" content="Kryvoruchko Yurii's Lab 7 of WebProgAndWebDesign">
+        <meta name="Keywords" content="html, lab, web programming, web design, Kryvoruchko">
+    </head>
+    <body bgcolor="#e0ffff" text="#330066">
+        <h2>Анкета замовлення товару</h2>
+        <form>
+            <table border="1" cellpadding="7">
+                <tr>
+                    <td colspan="3"><p align='center'><font color="red" size="5"><b>Анкета замовлення</b></font></p></td>
+                </tr>
+                <tr>
+                    <td valign="top">1.</td>
+                    <td valign="top">Ваш банківський рахунок</td>
+                    <td valign="top"><input type="number" name="bank_number" size="30"></td>
+                </tr>
+                <tr>
+                    <td valign="top">2.</td>
+                    <td valign="top">Ваш номер телефону</td>
+                    <td valign="top"><input type="tel" name="tel" size="30"></td>
+                </tr>
+                <tr>
+                    <td valign="top">3.</td>
+                    <td valign="top">Оберіть товари</td>
+                    <td valign="top">
+                        <input type="checkbox" name="item" value="0">Зубна щітка<br>
+                        <input type="checkbox" name="item" value="1">Мотузка<br>
+                        <input type="checkbox" name="item" value="2">Мило<br>
+                        <input type="checkbox" name="item" value="2">Камера<br>
+                        <input type="checkbox" name="item" value="2">Пляшка води<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top">4.</td>
+                    <td valign="top">Коментар</td>
+                    <td valign="top"><textarea name="comment" size="30"></textarea></td>
+                </tr>
+                <tr>
+                    <td valign="top">5.</td>
+                    <td valign="top">Спосіб оплати</td>
+                    <td valign="top">
+                        <input type="radio" name="payment" value="0">Готівка<br>
+                        <input type="radio" name="payment" value="1">Карта<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top">6.</td>
+                    <td valign="top">Додаткова інформація при відповіді</td>
+                    <td valign="top">
+                        <input type="checkbox" name="additionally" value="0">Дані про залишок на рахунку<br>
+                        <input type="checkbox" name="additionally" value="1">Список останніх виплат по рахунку<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" colspan="3">
+                        <input type="reset" value="Відмінити"> <input type="submit" value="Підтвердити">
+                        <br><br>
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+        <p align="right"><i><u><a href="https://django.python4132@gmail.com/" target="_blank">Студент групи 305-ТН Криворучко Ю.В.</a></u></i></p>
+    </body>
+</html>
