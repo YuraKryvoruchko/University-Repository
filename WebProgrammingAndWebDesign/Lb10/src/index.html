@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Лабораторна робота №10 – Криворучко Юрій</title>
+        <meta charset="UTF8">
+        <meta name="Description" content="Kryvoruchko Yurii's Lab 10 of WebProgAndWebDesign">
+        <meta name="Keywords" content="html, lab, web programming, web design, Kryvoruchko">
+
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            .item-blue {
+                grid-area: bl-area;
+                background-color: blue;
+            }
+     
+            .item-light-blue {
+                grid-area: lb-area;
+                background-color: lightblue;
+            }
+            
+            .item-red {
+                grid-area: r-area;
+                background-color: red;
+            }
+
+            .item-yellow {
+                grid-area: y-area;
+                background-color: yellow;
+            }
+            
+            .item-green {
+                grid-area: g-area;
+                background-color: green;
+            }
+        
+            .item-gray {
+                grid-area: gr-area;
+                background-color: gray;
+            }
+            
+            .item-brown {
+                grid-area: b-area;
+                background-color: brown;
+            }
+
+            .border {
+                border: 1px solid lightgray;
+            }
+
+            @media all and (width < 750px) {
+                .wrapper {
+                    display: grid;
+                    gap: 3px 3px;
+                    grid-template-columns: 100%;
+                    grid-template-rows: auto;
+                    grid-template-areas:
+                        "bl-area"
+                        "lb-area"
+                        "r-area"
+                        "g-area"
+                        "y-area"
+                        "gr-area"
+                        "b-area";
+                    height: 100vh;
+                }
+            }
+
+            @media all and (width >= 750px) {
+                .wrapper {
+                    display: grid;
+                    gap: 3px 3px;
+                    grid-template-columns: 50% 50%;
+                    grid-template-rows: auto;
+                    grid-template-areas: 
+                        "bl-area  bl-area"
+                        "lb-area r-area"
+                        "g-area  g-area"
+                        "y-area  y-area"
+                        "gr-area  gr-area"
+                        "b-area  b-area";
+                    height: 100vh;
+                }
+            }
+
+            @media all and (width >= 950px) {
+                .wrapper {
+                    display: grid;
+                    gap: 3px 3px;
+                    grid-template-columns: 30% 30% 40%;
+                    grid-template-rows: auto;
+                    grid-template-areas: 
+                        "bl-area  bl-area bl-area"
+                        "lb-area r-area y-area"
+                        "g-area  g-area y-area"
+                        "gr-area  gr-area gr-area"
+                        "b-area  b-area b-area";
+                    height: 100vh;
+                }
+            }
+
+            @media all and (width >= 1200px) {
+                .wrapper {
+                    display: grid;
+                    gap: 3px 3px;
+                    grid-template-columns: 25% 25% 30% 20%;
+                    grid-template-rows: auto;
+                    grid-template-areas: 
+                        "bl-area  bl-area bl-area gr-area"
+                        "lb-area r-area y-area gr-area"
+                        "g-area  g-area y-area gr-area"
+                        "b-area  b-area b-area b-area";
+                    height: 100vh;
+                }
+            }
+
+            .signature {
+                display: block;
+                padding: 10px;
+                text-align: right;
+                font-size: small;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="item-blue border"></div>
+            <div class="item-light-blue border"></div>
+            <div class="item-red border"></div>
+            <div class="item-yellow border"></div>
+            <div class="item-gray border"></div>
+            <div class="item-green border"></div>
+            <div class="item-brown border">
+                <i class="signature"><u><a href="https://django.python4132@gmail.com/" target="_blank">Студент групи 305-ТН Криворучко Ю.В.</a></u></i>
+            </div>
+        </div>
+    </body>
+</html>
