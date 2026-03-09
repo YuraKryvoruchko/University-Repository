@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>Варіант №2 - Криворучко Юрій</title>
+        <meta charset="UTF8">
+        
+        <style>
+            .section
+            {        
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 40px;
+                color: white;
+                border: 1px solid lightgray;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            .blue {
+                grid-area: bl-area;
+                background-color: blue;
+            }
+        
+            .red {
+                grid-area: r-area;
+                background-color: red;
+            }
+
+            .yellow {
+                grid-area: y-area;
+                background-color: #e9c300;
+            }
+
+           .wrapper {
+                display: grid;
+                grid-template-columns: 50% 50%;
+                grid-template-rows: auto;
+                grid-template-areas:
+                    "bl-area bl-area"                                                                  
+                    "y-area r-area";
+                height: 100vh;
+            }
+
+            @media all and (width <= 768px) {
+                .wrapper {
+                    display: grid;
+                    grid-template-columns: 100%;
+                    grid-template-rows: auto;
+                    grid-template-areas:
+                        "bl-area"                                                                  
+                        "y-area " 
+                        "r-area";
+                    height: 100vh;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="section blue">#1</div>
+            <div class="section yellow">#2</div>
+            <div class="section red">#3</div>
+        </div>
+    </body>
+</html>
