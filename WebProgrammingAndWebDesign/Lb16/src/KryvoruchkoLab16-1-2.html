@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title title="3">Лабораторна робота №16 – Криворучко Юрій</title>
+        <meta charset="UTF8">
+        <meta name="Description" content="Kryvoruchko Yurii's Lab 16 of WebProgAndWebDesign">
+        <meta name="Keywords" content="html, lab, web programming, web design, Kryvoruchko">
+    </head>
+    <body>
+        <p align="center">
+            <font color="#008080" size="7"><b>Завдання 1.2</b></font><br>
+        </p>
+
+        
+        <a href="https://www.google.com/">https://www.google.com/</a><br>
+        <a href="https://www.mozilla.org/">https://www.mozilla.org/</a><br>
+        <a href="https://nupp.edu.ua/">https://nupp.edu.ua/</a><br>
+
+    <script>
+        var title = document.querySelector('title');
+        let links = document.querySelectorAll('a');
+        links.forEach(element => {
+            element.addEventListener("mouseover", changeTitle)
+        });
+
+        function changeTitle() {
+            title.textContent = event.target.href;
+        }
+    </script>
+
+        <p align="right"><i><u>Студент групи 305-ТН Криворучко Ю.В.</u></i></p>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title title="3">Лабораторна робота №16 – Криворучко Юрій</title>
+        <meta charset="UTF8">
+        <meta name="Description" content="Kryvoruchko Yurii's Lab 16 of WebProgAndWebDesign">
+        <meta name="Keywords" content="html, lab, web programming, web design, Kryvoruchko">
+    </head>
+    <body>
+        <p align="center">
+            <font color="#008080" size="7"><b>Завдання 2.1</b></font><br>
+        </p>
+
+        <div><br>1</div>
+        <div><br>2</div>
+        <div><br>3</div>
+
+    <script>
+        let divs = document.querySelectorAll('div');
+        divs.forEach(element => {
+            element.addEventListener("click", fillRed)
+        });
+
+        function fillRed() {
+            event.target.removeEventListener('click', fillRed);
+            event.target.addEventListener('click', fillGreen);
+
+            event.target.style.backgroundColor = 'red';
+        }
+        function fillGreen() {
+            event.target.removeEventListener('click', fillGreen);
+            event.target.addEventListener('click', fillRed);
+
+            event.target.style.backgroundColor = 'green';
+        }
+    </script>
+
+        <p align="right"><i><u>Студент групи 305-ТН Криворучко Ю.В.</u></i></p>
+    </body>
+</html>

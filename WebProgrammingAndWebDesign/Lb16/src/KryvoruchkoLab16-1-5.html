@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title title="3">Лабораторна робота №16 – Криворучко Юрій</title>
+        <meta charset="UTF8">
+        <meta name="Description" content="Kryvoruchko Yurii's Lab 16 of WebProgAndWebDesign">
+        <meta name="Keywords" content="html, lab, web programming, web design, Kryvoruchko">
+    </head>
+    <body>
+        <p align="center">
+            <font color="#008080" size="7"><b>Завдання 1.5</b></font><br>
+        </p>
+
+        <p>one</p>
+        <p>two</p>
+        <p>three</p>
+
+    <script>
+        const numbers = {
+            one : 1,
+            two : 2,
+            three : 3
+        };
+
+        let paragraphs = document.querySelectorAll('p');
+        paragraphs.forEach(element => {
+            element.addEventListener("click", onClickParagraph)
+        });
+
+
+        function onClickParagraph() {
+            var number = numbers[event.target.textContent];
+            if (isNaN(number)) {
+                return;
+            }
+            event.target.textContent = number * number;
+        }
+    </script>
+
+        <p align="right"><i><u>Студент групи 305-ТН Криворучко Ю.В.</u></i></p>
+    </body>
+</html>
