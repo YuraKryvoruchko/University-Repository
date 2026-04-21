@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Лабораторна робота №18 – Криворучко Юрій</title>
+        <meta charset="UTF8">
+        <meta name="Description" content="Kryvoruchko Yurii's Lab 16 of WebProgAndWebDesign">
+        <meta name="Keywords" content="html, lab, web programming, web design, Kryvoruchko">
+    </head>
+    <body>
+    <input type="number" id="a" placeholder="First number">
+    <input type="number" id="b" placeholder="Second number">
+
+    <br><br>
+
+    <button onclick="Add()">+</button>
+    <button onclick="Sub()">-</button>
+    <button onclick="Mul()">*</button>
+    <button onclick="Div()">/</button>
+
+    <p id="result"></p>
+
+    <script>
+    function Add() {
+        let a = Number(document.getElementById("a").value);
+        let b = Number(document.getElementById("b").value);
+        document.getElementById("result").textContent = "Result: " + (a + b);
+    }
+
+    function Sub() {
+        let a = Number(document.getElementById("a").value);
+        let b = Number(document.getElementById("b").value);
+        document.getElementById("result").textContent = "Result: " + (a - b);
+    }
+
+    function Mul() {
+        let a = Number(document.getElementById("a").value);
+        let b = Number(document.getElementById("b").value);
+        document.getElementById("result").textContent = "Result: " + (a * b);
+    }
+
+    function Div() {
+        let a = Number(document.getElementById("a").value);
+        let b = Number(document.getElementById("b").value);
+
+        if (b === 0) {
+            document.getElementById("result").textContent = "Error: div on zero!";
+        } else {
+            document.getElementById("result").textContent = "Result: " + (a / b);
+        }
+    }
+    </script>
+
+    <p align="right"><i><u>Студент групи 305-ТН Криворучко Ю.В.</u></i></p>
+    </body>
+</html>

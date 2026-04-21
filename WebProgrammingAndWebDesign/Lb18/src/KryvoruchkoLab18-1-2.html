@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Лабораторна робота №18 – Криворучко Юрій</title>
+        <meta charset="UTF8">
+        <meta name="Description" content="Kryvoruchko Yurii's Lab 16 of WebProgAndWebDesign">
+        <meta name="Keywords" content="html, lab, web programming, web design, Kryvoruchko">
+    </head>
+    <body>
+        <input type="text" id="side" placeholder="Input side"><br>
+        <input type="text" id="count" placeholder="Input count">
+        <button onclick="calculate()">OK</button>
+        <p id="output">Perimeter: </p>
+    <script>
+        function calculate() {
+            const side = Number(document.getElementById("side").value);
+            const count = Number(document.getElementById("count").value);
+            const result = perimeter(side, count);
+            document.getElementById("output").textContent = "Perimeter: " + result;
+        }
+
+        function perimeter(side, count) {
+            return side * count;
+        }
+    </script>
+
+        <p align="right"><i><u>Студент групи 305-ТН Криворучко Ю.В.</u></i></p>
+    </body>
+</html>

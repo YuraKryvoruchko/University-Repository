@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Лабораторна робота №18 – Криворучко Юрій</title>
+        <meta charset="UTF8">
+        <meta name="Description" content="Kryvoruchko Yurii's Lab 16 of WebProgAndWebDesign">
+        <meta name="Keywords" content="html, lab, web programming, web design, Kryvoruchko">
+    </head>
+    <body>
+    <script>
+        let n = Number(prompt("Input N: "));
+        alert(checkNumber(n));
+
+        function isPrime(n) {
+            if (n <= 1) return false;
+            for (let i = 2; i <= Math.sqrt(n); i++) {
+                if (n % i === 0) return false;
+            }
+            return true;
+        }   
+
+        function checkNumber(n) {
+            let result = "";
+
+            if (n > 0) {
+                result += "Number is positive\n";
+            } else if (n < 0) {
+                result += "Number is negative\n";
+            } else {
+                result += "Number is 0\n";
+            }
+
+            if (isPrime(n)) {
+                result += "Number is prime\n";
+            } else {
+                result += "Number is NOT prime\n";
+            }
+
+            let divisors = [2, 3, 5, 6, 9];
+            let divisibleBy = [];
+
+            for (let d of divisors) {
+                if (n % d === 0) {
+                    divisibleBy.push(d);
+                }
+            }
+
+            if (divisibleBy.length > 0) {
+                result += "Div: " + divisibleBy.join(", ");
+            } else {
+                result += "Not div by 2, 3, 5, 6, 9";
+            }
+            return result;
+        }
+    </script>
+
+    <p align="right"><i><u>Студент групи 305-ТН Криворучко Ю.В.</u></i></p>
+    </body>
+</html>

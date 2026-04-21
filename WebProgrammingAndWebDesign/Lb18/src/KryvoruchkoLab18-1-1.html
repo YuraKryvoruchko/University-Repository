@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Лабораторна робота №18 – Криворучко Юрій</title>
+        <meta charset="UTF8">
+        <meta name="Description" content="Kryvoruchko Yurii's Lab 16 of WebProgAndWebDesign">
+        <meta name="Keywords" content="html, lab, web programming, web design, Kryvoruchko">
+    </head>
+    <body>
+        <input type="text" id="input" placeholder="Input number">
+        <button onclick="calculate()">OK</button>
+        <p id="output">Result: </p>
+    <script>
+        function calculate() {
+            const value = Number(document.getElementById("input").value);
+            const result = seconds(value);
+            document.getElementById("output").textContent = "Result: " + result;
+        }
+
+        function seconds(total) {
+            return total % 60;
+        }
+    </script>
+
+        <p align="right"><i><u>Студент групи 305-ТН Криворучко Ю.В.</u></i></p>
+    </body>
+</html>

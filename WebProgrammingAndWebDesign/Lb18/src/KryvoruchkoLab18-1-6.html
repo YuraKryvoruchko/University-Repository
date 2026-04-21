@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Лабораторна робота №18 – Криворучко Юрій</title>
+        <meta charset="UTF8">
+        <meta name="Description" content="Kryvoruchko Yurii's Lab 16 of WebProgAndWebDesign">
+        <meta name="Keywords" content="html, lab, web programming, web design, Kryvoruchko">
+    </head>
+    <body>
+    <script>
+        let n = Number(prompt("Input N: "));
+        let array = new Array();
+        for (i = 0; i < n; i++) {
+            array.push(Math.floor(Math.random() * 10));
+        }
+        
+        let topValue = 0;
+        let lowerValue = 10;
+        let sum = 0;
+        let oddNumbers = String();
+        array.forEach(element => {
+            if (element > topValue) {
+                topValue = element;
+            }
+            if (element < lowerValue) {
+                lowerValue = element;
+            }
+            sum += element;
+
+            if (element % 2 != 0) {
+                console.log(element);
+                oddNumbers += element.toString() + " ";
+            }
+        });
+        alert("Top: " + topValue + "\nLower: " + lowerValue + "\nSum: " + sum + "\nOdd numbers: " + oddNumbers);
+    </script>
+
+        <p align="right"><i><u>Студент групи 305-ТН Криворучко Ю.В.</u></i></p>
+    </body>
+</html>
