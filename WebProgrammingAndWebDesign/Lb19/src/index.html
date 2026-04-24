@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Лабораторна робота №19 – Криворучко Юрій</title>
+        <meta charset="UTF8">
+        <meta name="Description" content="Kryvoruchko Yurii's Lab 19 of WebProgAndWebDesign">
+        <meta name="Keywords" content="html, lab, web programming, web design, Kryvoruchko">
+    </head>
+    <body>
+        <h2>Квадрат числа</h2>
+
+        <input type="number" id="numberInput" placeholder="Введіть число">
+        <button onclick="sendNumber()">Обчислити</button>
+
+        <p id="result"></p>
+
+        <script>
+        function sendNumber() {
+            const number = Number(document.getElementById("numberInput").value);
+
+            const xhr = new XMLHttpRequest();
+
+            xhr.open("POST", "/.netlify/functions/square", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    const data = JSON.parse(xhr.responseText);
+
+                    if (xhr.status === 200) {
+                        document.getElementById("result").innerText =
+                            `Квадрат ${data.number} = ${data.square}`;
+                    } else {
+                        document.getElementById("result").innerText =
+                            data.error || "Помилка";
+                    }
+                }
+            };
+
+            xhr.send(JSON.stringify({ number }));
+        }
+        </script>
+
+        <p align="right"><i><u>Студент групи 305-ТН Криворучко Ю.В.</u></i></p>
+    </body>
+</html>
