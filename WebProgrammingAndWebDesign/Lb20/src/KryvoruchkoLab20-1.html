@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Лабораторна робота №20 – Криворучко Юрій</title>
+        <meta charset="UTF8">
+        <meta name="Description" content="Kryvoruchko Yurii's Lab 20 of WebProgAndWebDesign">
+        <meta name="Keywords" content="html, lab, web programming, web design, Kryvoruchko">
+    </head>
+    <body>
+        <p align="center">
+            <font color="#008080" size="7"><b>Завдання 1</b></font><br>
+        </p>
+
+        <script>   
+            class User {
+                language;
+                weekDayNumber;
+            }
+        
+            const user = new User();
+            const availableLanguage = ["ua", "en"];
+            const prompts = {
+                "weekDayNumber":{
+                    "ua":"Введіть номер дня неділі від 1 до 7?",
+                    "en":"Enter the day number of the week (from 1 to 7)?"
+                },
+                "errorWeekDayNumber":{
+                    "ua":"Невірне введення номеру дня неділі.",
+                    "en":"The day of the week was entered incorrectly."
+                }
+            };
+            const daysOfWeek = {
+                "ua":{
+                    1:"Понеділок",
+                    2:"Вівторок",
+                    3:"Середа",
+                    4:"Четверг",
+                    5:"П'ятниця",
+                    6:"Субота",
+                    7:"Неділя"
+                },
+                "en":{
+                    1:"Monday",
+                    2:"Tuesday",
+                    3:"Wednesday",
+                    4:"Thursday",
+                    5:"Friday",
+                    6:"Saturday",
+                    7:"Sunday"
+                }
+            }
+
+            var isCorrect = false;
+            while(!isCorrect) {
+                user.language = prompt('Виберіть мову "ua" або "en"?').toLowerCase();
+                if (availableLanguage.includes(user.language)){
+                    isCorrect = true;
+                }
+                else {
+                    alert('Невірний ввід мови. Спробуйте ще раз');
+                }
+            }
+
+            isCorrect = false;
+            while(!isCorrect) {
+                user.weekDayNumber = Number(prompt(prompts["weekDayNumber"][user.language]));
+                if (typeof user.weekDayNumber === "number" && user.weekDayNumber > 0 && user.weekDayNumber < 8){
+                    isCorrect = true;
+                }
+                else {
+                    alert(prompts["errorWeekDayNumber"][user.language]);
+                }
+            }
+
+            alert(daysOfWeek[user.language][user.weekDayNumber]);
+        </script>
+
+        <p align="right"><i><u>Студент групи 305-ТН Криворучко Ю.В.</u></i></p>
+    </body>
+</html>

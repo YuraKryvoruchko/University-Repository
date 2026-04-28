@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Лабораторна робота №20 – Криворучко Юрій</title>
+        <meta charset="UTF8">
+        <meta name="Description" content="Kryvoruchko Yurii's Lab 20 of WebProgAndWebDesign">
+        <meta name="Keywords" content="html, lab, web programming, web design, Kryvoruchko">
+    </head>
+    <body>
+        <p align="center">
+            <font color="#008080" size="7"><b>Завдання 2</b></font><br>
+            <font color="#000000" size="5"><b>Результат виконання програми в консолі(F12)</b></font><br>
+        </p>
+
+        <script>   
+            class GridElement {
+                getDayPowerMW() { return 0; }
+                getNightPowerMW() { return 0; }
+                toString() { }
+            }
+            class PowerStation extends GridElement {
+                #power;
+
+                constructor(power) {
+                    super();
+                    this.#power = power;
+                }   
+
+                getDayPowerMW() {
+                    return this.#power;
+                }
+                getNightPowerMW() {
+                    return this.#power;
+                }
+                toString() {
+                    return `Електростанція на ${this.#power} МВ`;
+                }
+            }     
+            class SunPanel extends GridElement {
+                #power;
+
+                constructor(power) {
+                    super();
+                    this.#power = power;
+                }
+
+                getDayPowerMW() {
+                    return this.#power;
+                }
+                getNightPowerMW() {
+                    return 0;
+                }
+
+                toString() {
+                    return `Сонячна панель на ${this.#power} МВ`;
+                }
+            }
+
+            class Building extends GridElement {
+                #apartments;
+
+                constructor(apartments) {
+                    super();
+                    this.#apartments = apartments;
+                }
+
+                getDayPowerMW() { 
+                    return -(this.#apartments * 4 / 1000);
+                }
+                getNightPowerMW() { 
+                    return -(this.#apartments / 1000);
+                }
+
+                toString() {
+                    return `Будинок на ${this.#apartments} квартир`;
+                }
+            }
+            class PowerLine {
+                name;
+                pricePerMW;
+                capacityMW;
+
+                constructor(name, pricePerMW, capacityMW) {
+                    this.name = name;
+                    this.pricePerMW = pricePerMW;
+                    this.capacityMW = capacityMW;
+                }
+
+                toString() {
+                    return `Лінія електропередач "${this.name}" з ціною ${this.pricePerMW} грн за МВ та потужністю ${this.capacityMW} МВ`;
+                }
+            }
+
+            class CityGrid {
+                elements;
+                lines;
+
+                constructor() {
+                    this.elements = [];
+                    this.lines = [];
+                }
+                
+                addElement(element) {
+                    this.elements.push(element);
+                }
+
+                addLine(line) {
+                    this.lines.push(line);
+                }
+
+                calculate(period) {
+                    let total = 0;
+
+                    for (let el of this.elements) {
+                        total += period === "day"
+                            ? el.getDayPowerMW()
+                            : el.getNightPowerMW();
+                    }
+
+                    console.log(`\n=== ${period === "day" ? "ДЕНЬ" : "НІЧ"} ===`);
+                    console.log(`Баланс енергії: ${total.toFixed(2)} МВт`);
+
+                    if (total < 0) {
+                        this.buyEnergy(Math.abs(total));
+                    } else if (total > 0) {
+                        this.sellEnergy(total);
+                    } else {
+                        console.log("Баланс ідеальний.");
+                    }
+                }
+
+                buyEnergy(needMW) {
+                    console.log(`Потрібно купити ${needMW.toFixed(2)} МВт`);
+
+                    let sorted = [...this.lines].sort((a, b) => a.pricePerMW - b.pricePerMW);
+
+                    let cost = 0;
+
+                    for (let line of sorted) {
+                        let amount = Math.min(needMW, line.capacityMW);
+                        if (amount > 0) {
+                            cost += amount * line.pricePerMW;
+                            needMW -= amount;
+
+                            console.log(
+                                `Куплено ${amount.toFixed(2)} МВт через ${line.name} ` +
+                                `по ${line.pricePerMW} грн`
+                            );
+                        }
+                    }
+
+                    if (needMW > 0) {
+                        console.log(`Не вистачає ще ${needMW.toFixed(2)} МВт!`);
+                    }
+
+                    console.log(`Загальна вартість: ${cost.toFixed(2)} грн`);
+                }
+
+                sellEnergy(extraMW) {
+                    console.log(`Можна продати ${extraMW.toFixed(2)} МВт`);
+
+                    let sorted = [...this.lines].sort((a, b) => b.pricePerMW - a.pricePerMW);
+
+                    let income = 0;
+
+                    for (let line of sorted) {
+                        let amount = Math.min(extraMW, line.capacityMW);
+
+                        if (amount > 0) {
+                            income += amount * line.pricePerMW;
+                            extraMW -= amount;
+
+                            console.log(
+                                `Продано ${amount.toFixed(2)} МВт через ${line.name} ` +
+                                `по ${line.pricePerMW} грн`
+                            );
+                        }
+                    }
+
+                    if (extraMW > 0) {
+                        console.log(`Залишилось непродано ${extraMW.toFixed(2)} МВт`);
+                    }
+
+                    console.log(`Прибуток: ${income.toFixed(2)} грн`);
+                }
+            }
+
+            const city = new CityGrid();
+
+            console.log("Електрична мережа міста:");
+            city.addElement(new PowerStation(80));
+            city.addElement(new PowerStation(20));
+
+            city.addElement(new SunPanel(3));
+            city.addElement(new SunPanel(5));
+            city.addElement(new SunPanel(2));
+            city.addElement(new SunPanel(4));
+            city.addElement(new SunPanel(2));
+            city.addElement(new SunPanel(1));
+
+            city.addElement(new Building(300));
+            city.addElement(new Building(200));
+            city.addElement(new Building(150));
+
+            city.addLine(new PowerLine("Лінія Київ", 30, 1500));
+            city.addLine(new PowerLine("Лінія Львів", 20, 1700));
+            city.addLine(new PowerLine("Лінія Одеса", 50, 1300));
+
+            city.elements.forEach(element => {
+                console.log(element.toString());
+            })
+            city.lines.forEach(element => {
+                console.log(element.toString());
+            })
+
+            city.calculate("day");
+            city.calculate("night");
+        </script>
+
+        <p align="right"><i><u>Студент групи 305-ТН Криворучко Ю.В.</u></i></p>
+    </body>
+</html>
