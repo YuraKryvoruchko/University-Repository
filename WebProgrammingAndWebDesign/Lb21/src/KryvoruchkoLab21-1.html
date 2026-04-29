@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Лабораторна робота №21 – Криворучко Юрій</title>
+        <meta charset="UTF8">
+        <meta name="Description" content="Kryvoruchko Yurii's Lab 20 of WebProgAndWebDesign">
+        <meta name="Keywords" content="html, lab, web programming, web design, Kryvoruchko">
+    </head>
+    <body>
+        <p align="center">
+            <font color="#008080" size="7"><b>Завдання 1</b></font><br>
+        </p>
+
+        <script>   
+            const dowUa = [
+                "неділя",
+                "понеділок",
+                "вівторок",
+                "середа",
+                "четверг",
+                "п'ятниця",
+                "субота"
+            ]
+            const months = [
+                "січня",
+                "лютого",
+                "березня",
+                "квітня",
+                "травня",
+                "червня",
+                "липня",
+                "серпня",
+                "вересня",
+                "жовтня",
+                "листопада",
+                "грудня"
+            ];            
+
+            function getTime() {
+                let now = new Date();
+
+                let hours = String(now.getHours()).padStart(2, '0');
+                let minutes = String(now.getMinutes()).padStart(2, '0');
+                let seconds = String(now.getSeconds()).padStart(2, '0');
+                
+                let day = dowUa[now.getDay()];
+                let date = String(now.getDate()).padStart(2, "0");
+                let month = months[now.getMonth()];
+                let year = now.getFullYear();
+
+                return `${hours}:${minutes}:${seconds}, ${day} , ${date} ${month} ${year} року`;
+            }
+
+            console.log(getTime());
+        </script>
+
+        <p align="right"><i><u>Студент групи 305-ТН Криворучко Ю.В.</u></i></p>
+    </body>
+</html>

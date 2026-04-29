@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Лабораторна робота №21 – Криворучко Юрій</title>
+        <meta charset="UTF8">
+        <meta name="Description" content="Kryvoruchko Yurii's Lab 21 of WebProgAndWebDesign">
+        <meta name="Keywords" content="html, lab, web programming, web design, Kryvoruchko">
+    </head>
+    <body>
+        <p align="center">
+            <font color="#008080" size="7"><b>Завдання 2</b></font><br>
+        </p>
+
+        <script>  
+            let isContinue = true; 
+            while(isContinue) {
+                let randomNumber = Math.floor(Math.random() * (50 - 0 + 1));
+                console.log(randomNumber);
+                let userNumber = -1;
+                let count = 0;
+                while(randomNumber != userNumber) {
+                    userNumber = Number(prompt("Введіть число від 0 до 50:"));
+                    if (Number.isNaN(userNumber) || userNumber < 0 || userNumber > 50) {
+                        alert(`Неправильно введено число!`);
+                        continue;
+                    }
+                    count += 1;
+
+                    let absolute = Math.abs(randomNumber - userNumber);
+                    if (absolute == 0) {
+                        alert(`За ${count} спроб ви вгадали число ${randomNumber}`);
+                    }
+                    else if (absolute < 5) {
+                        alert(`Гаряче`);
+                    }
+                    else if (absolute < 15) {
+                        alert(`Тепло`);
+                    }
+                    else {
+                        alert(`Холодно`);
+                    }
+                }
+
+                isContinue = confirm("Спробувати ще раз?");
+            }
+        </script>
+
+        <p align="right"><i><u>Студент групи 305-ТН Криворучко Ю.В.</u></i></p>
+    </body>
+</html>
