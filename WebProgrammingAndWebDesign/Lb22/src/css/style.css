@@ -1,0 +1,103 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.title {
+    font-size: 5rem;
+    color: coral;
+}
+
+button {
+    background-color: rgb(0, 162, 255);
+    border-color: rgb(0, 47, 203);
+    border-width: 2px;
+    border-radius: 15px 15px;
+                
+    color: aliceblue;
+    font-size: 2rem;
+                
+    padding: 1%;
+}
+button:hover {
+    background-color: rgb(1, 128, 202);
+}
+button:active {
+    background-color: rgb(0, 97, 153);
+}
+
+#timer {
+    font-size: 2.5rem;
+    margin: 0;
+    color: coral;
+}
+            
+.game-grid {
+    border: 20px;
+    display: grid;
+    width: fit-content;
+    gap: 5px;
+    border: 3px solid black;
+    padding: 5px;
+    grid-template-columns: repeat(5, 80px);
+    grid-template-rows: repeat(5, 80px);
+}
+
+.item {
+    border: 1px solid black;
+    text-align: center;
+    align-content: center;
+    padding: 20px;
+}
+
+.clicked {
+    background-color: aqua;
+}
+ 
+#result-table {
+    border-collapse: collapse;
+    margin: 30px auto;
+    font-size: 28px;
+}
+
+.header-row {
+    background-color: #4d95d8;
+    color: white;
+    font-weight: bold;
+}
+.first-row {
+    background-color: #a9def9;
+}
+.second-row {
+    background-color: #def4ff;
+}
+.third-row {
+    background-color: #ffcc8e;
+}
+#result-table th,
+#result-table td {
+    padding: 12px 30px;
+    border: 2px solid #313131;
+    text-align: left;
+    min-width: 250px;
+}
+
+.size-1 {
+    font-size: 15px;
+}
+.size-2 {
+    font-size: 20px;
+}
+.size-3 {
+    font-size: 25px;
+} 
+.size-4 {
+    font-size: 30px;
+}
+.size-5 {
+    font-size: 35px;
+}

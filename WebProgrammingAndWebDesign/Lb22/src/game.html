@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Лабораторна робота №22 – Криворучко Юрій</title>
+        <meta charset="UTF8">
+        <meta name="Description" content="Kryvoruchko Yurii's Lab 22 of WebProgAndWebDesign">
+        <meta name="Keywords" content="html, lab, web programming, web design, Kryvoruchko">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <p id="timer">Залишилося: 60</p>
+            <div class="game-grid">
+            </div>
+            <button id="restart">Почати з початку</button>
+    
+            <table id="result-table" class="">
+                <tr class="header-row">
+                    <th>Гра</th>
+                    <th>Результат</th>
+                </tr>
+            </table>
+        </div>
+
+        <script>
+            class GameStats {
+                number;
+                time;
+
+                constructor(number, time) {
+                    this.number = number;
+                    this.time = time;
+                }
+            }
+
+            const textSizes = [
+                "size-1",
+                "size-2",
+                "size-3",
+                "size-4",
+                "size-5"
+            ];
+            
+            const MAX_TIMER = 60;
+
+            let games = [];
+            let timer = MAX_TIMER;
+            let interval;
+            let numberList;
+            let lastNumber = 0;
+
+            $(document).ready(function() { 
+                setupGame();
+                listenRestartButton();
+            });
+
+            function setupGame() {
+                lastNumber = 0;
+                generatePanels();
+                listenPanelClick();
+                setupTimer();
+            }
+
+            function generatePanels() {
+                $(".game-grid").empty();
+                numberList = getNumberList();
+                for (let i = 0; i < 25; i++) {
+                    let number = getRandomNumberFromList();
+                    let size = textSizes[getRandomInt(0, 4)];
+                    $(`<div style="color: rgb(${getRandomInt(0, 255)}, ${getRandomInt(0, 255)}, ${getRandomInt(0, 255)})" class="item ${size}">${number}</div>`)
+                        .appendTo($(".game-grid"));
+                }
+            }
+
+            function getNumberList() {
+                let numbers = [];
+                for (let i = 1; i <= 25; i += 1) {
+                    numbers.push(i);
+                }
+                return numbers;
+            }
+
+            function getRandomNumberFromList() {
+                let i = getRandomInt(0, numberList.length - 1);
+                let number = numberList[i];
+                let lastNumber = numberList.pop();
+
+                if (i < numberList.length) {
+                    numberList[i] = lastNumber;
+                }
+
+                return number;
+            }
+
+            function setupTimer() {
+                timer = MAX_TIMER;
+                clearInterval(interval);
+                
+                $("#timer").text(`Залишилося: ${timer}`);
+                interval = setInterval(function() {
+                    timer -= 1;
+                    $("#timer").text(`Залишилося: ${timer}`);
+
+                    if (timer == 0) {
+                        handleEndGame();
+                    }
+                }, 1000);
+            }
+
+            function listenPanelClick() {
+                $(".game-grid").on("click", ".item", function() {     
+                    if (lastNumber + 1 != Number($(this).text())) {
+                        alert("Не вірна цифра");
+                        return;
+                    }
+
+                    $(this).addClass("clicked");
+                    lastNumber += 1;
+
+                    if (lastNumber == 25) {
+                        handleWin();
+                        handleEndGame();
+                    }
+                });
+            }
+            
+            function listenRestartButton() {
+                $("#restart").click(function() {
+                    handleEndGame();
+                    setupGame();
+                });
+            }
+
+            function handleWin() {
+                saveResult(timer);
+                updateResultTable();
+            }
+
+            function handleEndGame() {
+                $(".game-grid").off("click");
+                clearInterval(interval);
+                alert("Програш");
+            }
+
+            function saveResult(timer) {
+                games.push(new GameStats(games.length + 1, MAX_TIMER - timer));
+            }
+            
+            function updateResultTable() {
+                $("#result-table tr:gt(0)").remove();
+                games.sort((a, b) => a.time - b.time);
+                let i = 1;
+                games.forEach(element => {
+                    let tr = $(`<tr><th>Гра ${element.number}</th><th>${element.time} с.</th></tr>`)
+                        .appendTo($("#result-table")); 
+                    if (i == 1) {
+                        tr.addClass("first-row");
+                    }
+                    else if(i == 2) {
+                        tr.addClass("second-row");
+                    }
+                    else if(i == 3) {
+                        tr.addClass("third-row");
+                    }
+                    i += 1;
+                });
+            }
+
+            function getRandomInt(min, max) {
+                return Math.floor(Math.random() * (max - min + 1) + min);
+            }
+        </script>
+
+        <p align="right"><i><u>Студент групи 305-ТН Криворучко Ю.В.</u></i></p>
+    </body>
+</html>
