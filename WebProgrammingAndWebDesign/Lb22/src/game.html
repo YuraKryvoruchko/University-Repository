@@ -104,6 +104,7 @@
 
                     if (timer == 0) {
                         handleEndGame();
+                        alert("Програш");
                     }
                 }, 1000);
             }
@@ -135,12 +136,12 @@
             function handleWin() {
                 saveResult(timer);
                 updateResultTable();
+                alert("Виграш");
             }
 
             function handleEndGame() {
                 $(".game-grid").off("click");
                 clearInterval(interval);
-                alert("Програш");
             }
 
             function saveResult(timer) {
