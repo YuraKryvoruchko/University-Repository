@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Лабораторна робота №24 – Криворучко Юрій</title>
+        <meta charset="UTF8">
+        <meta name="Description" content="Kryvoruchko Yurii's Lab 24 of WebProgAndWebDesign">
+        <meta name="Keywords" content="html, lab, web programming, web design, Kryvoruchko">
+    </head>
+    <body bgcolor="#ffffff" text="#330066">
+        
+        <div id="root"></div>
+
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+
+        <script type="text/babel">
+            class Title extends React.Component {
+                render() {
+                    return <h1>Моє хобі</h1>;
+                }
+            }
+
+            class MyHobies extends React.Component {
+                render() {
+                    return (
+                        <div>
+                        <font size="4">Частина моїх хобі:</font>
+                        <p align="justify"><ol>
+                            <li>
+                                Граю на <b>гітарі</b>;
+                            </li>
+                            <li>
+                                Обожнюю грати в комп'ютерні ігри. Особливо в жанрі <u><b>milsim</b></u>: Arma Reforger, Squad, Squad 44 тощо;
+                            </li>
+                            <li>
+                                <a href="https://zyma.itch.io/hungry-but-match3">Розробка ігор</a> та програмування в цілому.
+                            </li>
+                        </ol></p>
+                        </div>
+                    );
+                }
+            }
+            
+            class Programming extends React.Component {
+                render() {
+                return (
+                    <div>
+                        <h2>Програмування</h2>
+                        <pre>
+                        {`
+#include <iostream>
+
+int main() {
+    std::cout << "Hello World!" << std::endl;
+    return 0;
+}
+                        `}
+                        </pre>
+                    </div>
+                );
+            }
+        }
+            
+            class Author extends React.Component {
+                render() {return <p align="right"><i><u>Студент групи 305-ТН Криворучко Ю.В.</u></i></p>;}
+            }
+
+            ReactDOM.render(
+                <React.StrictMode>
+                    <Title />
+                    <MyHobies />
+                    <Programming />
+                    <Author />
+                </React.StrictMode>, 
+                document.getElementById("root")
+            );
+        </script>
+    </body>
+</html>
