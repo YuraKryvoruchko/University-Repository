@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Лабораторна робота №23 – Криворучко Юрій</title>
+        <meta charset="UTF8">
+        <meta name="Description" content="Kryvoruchko Yurii's Lab 22 of WebProgAndWebDesign">
+        <meta name="Keywords" content="html, lab, web programming, web design, Kryvoruchko">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet"
+          href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    </head>
+    <body>
+        <div class="container center">
+            <div class="row center gap-10">
+                <button id="animals-button">Тварини</button>
+                <button id="insects-button">Комахи</button>
+                <button id="fish-button">Риби</button>
+            </div>
+
+            <div class="row center gap-10">
+                <div class="game-grid">
+                    <dev class="item">
+                        <img src="images/animals/">
+                    </dev>
+                </div>
+                <div class="column center gap-10">
+                    <button id="restart">Почати з початку</button>
+                    <div id="current-item"><img src="images/animals/1.jpg" width="80" height="80"></div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
+        <script>       
+            const MAX_ELEMENT = 50;
+            const ELEMENTS_IN_GRID = 25;
+        
+            let selectedNumberList;
+            let category = "animals";
+            let currentItemStartPosition;
+
+            $(document).ready(function() {
+                currentItemStartPosition = $("#current-item").position();
+                selectedNumberList = getNumberList();
+                generatePanels();
+                setupPanels();
+                setupCurrentElement();
+                listenRestartButton();   
+
+                $("#animals-button").click(function() {
+                    category = "animals";
+                    restartGame();
+                });
+                $("#insects-button").click(function() {
+                    category = "insects";
+                    restartGame();
+                });
+                $("#fish-button").click(function() {
+                    category = "fish";
+                    restartGame();
+                });
+            });
+
+            function generatePanels() {
+                $(".game-grid").empty();
+                let copyList = [...selectedNumberList];
+                for (let i = 0; i < ELEMENTS_IN_GRID; i += 1) {
+                    let number = popRandomElementFromList(copyList);
+                    $(`<div class="item"><img src="images/${category}/${number}.jpg" width="80" height="80"></div>`)
+                        .appendTo($(".game-grid"));
+                }
+            }
+
+            function getNumberList() {
+                let numbers = [];
+                for (let i = 1; i <= MAX_ELEMENT; i += 1) {
+                    numbers.push(i);
+                }
+
+                let selectedNumbers = [];
+                for (let i = 1; i <= ELEMENTS_IN_GRID; i += 1) {
+                    selectedNumbers.push(popRandomElementFromList(numbers));
+                }
+
+                return selectedNumbers;
+            }
+
+            function setupPanels() {
+                $(".item").droppable({
+                    drop: function(event, ui) {
+                        let srcItem = $(this).find("img").attr("src");
+                        let currentItem = $("#current-item img").attr("src");
+                        let isCorrect = srcItem === currentItem;
+                        ui.draggable.data("correct", isCorrect);
+                        if (isCorrect) {
+                            if (selectedNumberList.length == 0) {
+                                alert("Виграш!");
+                                restartGame();
+                            }
+
+                            setupCurrentElement();
+                            $(this).append(`<div class="overlay"></div>`);
+
+                        }
+                    }
+                });
+            }
+
+            function setupCurrentElement() {
+                $("#current-item").draggable({ 
+                    revert: function() {
+                        return !$(this).data("correct");
+                    } 
+                });
+                updateCurrentElement();
+            }
+
+            function updateCurrentElement() {
+                $("#current-item").data("correct", false);
+                $("#current-item").offset(currentItemStartPosition);
+
+                if (selectedNumberList.length > 0) {
+                    let randomNumber = popRandomElementFromList(selectedNumberList);
+                    $("#current-item img").attr("src", `images/${category}/${randomNumber}.jpg`);
+                }
+            }
+
+            function popRandomElementFromList(list) {
+                let i = getRandomInt(0, list.length - 1);
+                let element = list[i];
+                let popElement = list.pop();
+
+                if (i < list.length) {
+                    list[i] = popElement;
+                }
+
+                return element;
+            }
+            
+            function listenRestartButton() {
+                $("#restart").click(function() {
+                    restartGame();
+                });
+            }
+
+            function restartGame() {
+                selectedNumberList = getNumberList();
+                generatePanels();
+                setupPanels();
+                updateCurrentElement();
+            }
+            
+            function getRandomInt(min, max) {
+                return Math.floor(Math.random() * (max - min + 1) + min);
+            }
+        </script>
+
+        <p align="right"><i><u>Студент групи 305-ТН Криворучко Ю.В.</u></i></p>
+    </body>
+</html>
